@@ -14,6 +14,18 @@
 		6619897519FEC73B00F6C11A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6619897419FEC73B00F6C11A /* Images.xcassets */; };
 		6619897819FEC73B00F6C11A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6619897619FEC73B00F6C11A /* LaunchScreen.xib */; };
 		6619898419FEC73C00F6C11A /* InstagramOreoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619898319FEC73C00F6C11A /* InstagramOreoTests.m */; };
+		6619898F19FEC85C00F6C11A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6619898D19FEC85C00F6C11A /* Bolts.framework */; };
+		6619899019FEC85C00F6C11A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6619898E19FEC85C00F6C11A /* Parse.framework */; };
+		6619899219FEC87E00F6C11A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6619899119FEC87E00F6C11A /* AudioToolbox.framework */; };
+		6619899419FEC88700F6C11A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6619899319FEC88700F6C11A /* CFNetwork.framework */; };
+		6619899619FEC89200F6C11A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6619899519FEC89200F6C11A /* CoreGraphics.framework */; };
+		6619899819FEC89D00F6C11A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6619899719FEC89D00F6C11A /* CoreLocation.framework */; };
+		6619899A19FEC8A800F6C11A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6619899919FEC8A800F6C11A /* libz.dylib */; };
+		6619899C19FEC8B300F6C11A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6619899B19FEC8B300F6C11A /* MobileCoreServices.framework */; };
+		6619899E19FEC8BC00F6C11A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6619899D19FEC8BC00F6C11A /* QuartzCore.framework */; };
+		661989A019FEC8C600F6C11A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6619899F19FEC8C600F6C11A /* Security.framework */; };
+		661989A219FEC8D000F6C11A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661989A119FEC8D000F6C11A /* StoreKit.framework */; };
+		661989A419FEC8DB00F6C11A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661989A319FEC8DB00F6C11A /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +52,18 @@
 		6619897D19FEC73C00F6C11A /* InstagramOreoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstagramOreoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6619898219FEC73C00F6C11A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6619898319FEC73C00F6C11A /* InstagramOreoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstagramOreoTests.m; sourceTree = "<group>"; };
+		6619898D19FEC85C00F6C11A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		6619898E19FEC85C00F6C11A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		6619899119FEC87E00F6C11A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6619899319FEC88700F6C11A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		6619899519FEC89200F6C11A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6619899719FEC89D00F6C11A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6619899919FEC8A800F6C11A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		6619899B19FEC8B300F6C11A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		6619899D19FEC8BC00F6C11A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6619899F19FEC8C600F6C11A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		661989A119FEC8D000F6C11A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		661989A319FEC8DB00F6C11A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +71,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				661989A419FEC8DB00F6C11A /* SystemConfiguration.framework in Frameworks */,
+				661989A219FEC8D000F6C11A /* StoreKit.framework in Frameworks */,
+				661989A019FEC8C600F6C11A /* Security.framework in Frameworks */,
+				6619899E19FEC8BC00F6C11A /* QuartzCore.framework in Frameworks */,
+				6619899C19FEC8B300F6C11A /* MobileCoreServices.framework in Frameworks */,
+				6619899A19FEC8A800F6C11A /* libz.dylib in Frameworks */,
+				6619899819FEC89D00F6C11A /* CoreLocation.framework in Frameworks */,
+				6619899619FEC89200F6C11A /* CoreGraphics.framework in Frameworks */,
+				6619899419FEC88700F6C11A /* CFNetwork.framework in Frameworks */,
+				6619899219FEC87E00F6C11A /* AudioToolbox.framework in Frameworks */,
+				6619899019FEC85C00F6C11A /* Parse.framework in Frameworks */,
+				6619898F19FEC85C00F6C11A /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +132,18 @@
 		6619896719FEC73B00F6C11A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				661989A319FEC8DB00F6C11A /* SystemConfiguration.framework */,
+				661989A119FEC8D000F6C11A /* StoreKit.framework */,
+				6619899F19FEC8C600F6C11A /* Security.framework */,
+				6619899D19FEC8BC00F6C11A /* QuartzCore.framework */,
+				6619899B19FEC8B300F6C11A /* MobileCoreServices.framework */,
+				6619899919FEC8A800F6C11A /* libz.dylib */,
+				6619899719FEC89D00F6C11A /* CoreLocation.framework */,
+				6619899519FEC89200F6C11A /* CoreGraphics.framework */,
+				6619899319FEC88700F6C11A /* CFNetwork.framework */,
+				6619899119FEC87E00F6C11A /* AudioToolbox.framework */,
+				6619898D19FEC85C00F6C11A /* Bolts.framework */,
+				6619898E19FEC85C00F6C11A /* Parse.framework */,
 				6619896819FEC73B00F6C11A /* Info.plist */,
 				6619896919FEC73B00F6C11A /* main.m */,
 			);
@@ -343,6 +391,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/InstagramOreo",
+				);
 				INFOPLIST_FILE = InstagramOreo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -353,6 +405,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/InstagramOreo",
+				);
 				INFOPLIST_FILE = InstagramOreo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -412,6 +468,7 @@
 				6619898919FEC73C00F6C11A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6619898A19FEC73C00F6C11A /* Build configuration list for PBXNativeTarget "InstagramOreoTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +477,7 @@
 				6619898C19FEC73C00F6C11A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
