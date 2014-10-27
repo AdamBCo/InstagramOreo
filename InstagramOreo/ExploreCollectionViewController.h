@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ExploreCollectionViewController.h
 //  InstagramOreo
 //
 //  Created by Adam Cooper on 10/27/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ExploreCollectionViewController : UICollectionViewController
 
 @end
-
