@@ -68,9 +68,27 @@
     PFObject *photoObject = [self.arrayOfPhotoObjects objectAtIndex:indexPath.row];
     NewsFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsFeedCell"];
     cell.capturedPhoto.file = [photoObject objectForKey:@"imageFile"];
+    cell.photoCaptionTextView.text = [photoObject objectForKey:@"caption"];
+    
+    
+    //TimeCreated
+    NSDate *date = photoObject.createdAt;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
+    NSString *creationDate = [dateFormat stringFromDate:date];
+    cell.timeLabel.text = creationDate;
+    
     [cell.capturedPhoto loadInBackground];
     return cell;
 }
+
+
+
+
+
+
+
+
 
 - (void)downloadAllImages{
     PFUser *user = [PFUser currentUser];
