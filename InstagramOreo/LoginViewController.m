@@ -10,8 +10,9 @@
 #import <Parse/Parse.h>
 
 @interface LoginViewController ()
-@property (strong, nonatomic) IBOutlet UITextField *usernameField;
-@property (strong, nonatomic) IBOutlet UITextField *passwordField;
+
+@property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @end
 
@@ -21,14 +22,29 @@
     [super viewDidLoad];
     self.navigationItem.hidesBackButton = YES;
     [self.tabBarController.tabBar setHidden:YES];
+    
+    [self.usernameTextField addTarget:self.passwordTextField action:@selector(becomeFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.passwordTextField addTarget:self action:@selector(login:) forControlEvents:UIControlEventEditingDidEndOnExit];
 
-    [self.usernameField addTarget:self.passwordField action:@selector(becomeFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [self.passwordField addTarget:self action:@selector(login:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+}
+
+- (void)dismissKeyboard
+{
+    if ([self.usernameTextField isFirstResponder])
+    {
+        [self.usernameTextField resignFirstResponder];
+    }
+    else if ([self.passwordTextField isFirstResponder])
+    {
+        [self.passwordTextField resignFirstResponder];
+    }
 }
 
 - (IBAction)login:(id)sender {
-    NSString *username = [self.usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString *password = [self.passwordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *username = [self.usernameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *password = [self.passwordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if ([username length] == 0 || [password length] == 0) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Missing Info"
