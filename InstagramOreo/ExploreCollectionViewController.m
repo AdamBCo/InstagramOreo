@@ -10,7 +10,7 @@
 #import "PhotoCollectionViewCell.h"
 #import <Parse/Parse.h>
 
-@interface ExploreCollectionViewController ()
+@interface ExploreCollectionViewController () <UICollectionViewDelegateFlowLayout>
 
 @property NSArray *photos;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -79,15 +79,24 @@ static NSString * const reuseIdentifier = @"CollectionCell";
     return cell;
 }
 
-- (CGSize)collection
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     UIImage *collectionImage = [UIImage imageWithData:self.photos.firstObject];
-    NSLog(@"image %@", collectionImage);
-    cell.ob
+    //collectionImage.size = CGSizeMake(collectionView.bounds.size.width, collectionView.bounds.size.height);
+    //NSLog(@"image %@", collectionImage);
     cell.photoImage.image = [UIImage imageWithData:[self.photos objectAtIndex:indexPath.row]];
+    [cell.photoImage sizeToFit];
     return cell;
+}
+
+#pragma mark - Collection View Flow Delegate Methods
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    //CGSize size = CGSizeMake(self.view.frame.size.width / .333, self.view.frame.size.width / .333);
+    CGSize size = CGSizeMake(collectionView.bounds.size.width * 0.333, collectionView.bounds.size.height * 0.333);
+    NSLog(@"%f",collectionView.bounds.size.width);
+    return size;
 }
 
 #pragma mark <UICollectionViewDelegate>
