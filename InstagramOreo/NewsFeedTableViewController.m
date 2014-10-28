@@ -67,14 +67,25 @@
     
     Post *photoPost = [self.arrayOfPhotoObjects objectAtIndex:indexPath.row];
     NewsFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsFeedCell"];
-    cell.userNameLabel.text = photoPost.userName;
+    
+    //UserName
+    [photoPost usernameWithCompletionBlock:^(NSString *username) {
+        cell.userNameLabel.text = username;
+    }];
+    
+    //Image
     [photoPost standardImageWithCompletionBlock:^(UIImage *photo) {
         cell.capturedPhoto.image = photo;
     }];
+    
+    //PhotoCaption
     cell.photoCaptionTextView.text = photoPost.caption;
+    
+    //TimeLabel
     cell.timeLabel.text = photoPost.timeCreatedString;
     return cell;
 }
+
 
 - (void)downloadAllImages{
     PFUser *user = [PFUser currentUser];

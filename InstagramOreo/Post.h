@@ -21,5 +21,5 @@
 @property NSString *userName;
 
 -(void)standardImageWithCompletionBlock:(void(^)(UIImage *))completionBlock;
-
+-(void)usernameWithCompletionBlock:(void(^)(NSString *username))completionBlock;
 @end

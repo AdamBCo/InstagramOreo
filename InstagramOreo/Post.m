@@ -46,10 +46,18 @@
     return [self objectForKey:@"user"];
 }
 
--(NSString *)userName{
-//    PFUser *user = [self objectForKey:@"user"];
-//    NSLog(@"%@",user.username);
-    return @"Hello";
+//-(NSString *)userName{
+//    PFUser *userCool = self.user;
+//    [userCool fetchIfNeeded];
+//    return userCool.username;
+//}
+
+-(void)usernameWithCompletionBlock:(void(^)(NSString *username))completionBlock {
+    
+    PFUser *objectHelp = self.user;
+    [objectHelp fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        completionBlock(objectHelp.username);
+    }];
 }
 
 -(NSString *)timeCreatedString{
