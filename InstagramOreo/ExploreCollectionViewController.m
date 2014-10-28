@@ -81,9 +81,7 @@ static NSString * const reuseIdentifier = @"CollectionCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    UIImage *collectionImage = [UIImage imageWithData:self.photos.firstObject];
     cell.photoImage.image = [UIImage imageWithData:[self.photos objectAtIndex:indexPath.row]];
-    [cell.photoImage sizeToFit];
     return cell;
 }
 
@@ -91,10 +89,15 @@ static NSString * const reuseIdentifier = @"CollectionCell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //CGSize size = CGSizeMake(self.view.frame.size.width / .333, self.view.frame.size.width / .333);
-    CGSize size = CGSizeMake(collectionView.bounds.size.width * 0.333, collectionView.bounds.size.height * 0.333);
-    NSLog(@"%f",collectionView.bounds.size.width);
+    // Make three cells show up side by side
+    CGSize size = CGSizeMake(collectionView.bounds.size.width * 0.333 - 10, collectionView.bounds.size.width * 0.333);
     return size;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    UIEdgeInsets edgeInsets = UIEdgeInsetsMake(5.0, 0.0, 5.0, 5.0);
+    return edgeInsets;
 }
 
 #pragma mark <UICollectionViewDelegate>
