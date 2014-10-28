@@ -69,7 +69,6 @@
     NewsFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsFeedCell"];
     cell.capturedPhoto.file = [photoObject objectForKey:@"imageFile"];
     [cell.capturedPhoto loadInBackground];
-    cell.photoCaptionTextView.text = [self.arrayOfPhotoObjects objectAtIndex:indexPath.row];
     return cell;
 }
 
