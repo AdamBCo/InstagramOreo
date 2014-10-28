@@ -20,23 +20,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lmB-aT-qET">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lmB-aT-qET">
                                 <rect key="frame" x="16" y="324" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GJI-yb-rny">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GJI-yb-rny">
                                 <rect key="frame" x="16" y="374" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oreo" translatesAutoresizingMaskIntoConstraints="NO" id="Vdc-Nb-Nmy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="oreo" translatesAutoresizingMaskIntoConstraints="NO" id="Vdc-Nb-Nmy">
                                 <rect key="frame" x="183" y="78" width="234" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Vdc-Nb-Nmy" secondAttribute="height" multiplier="48:41" id="nrq-SK-5J2"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIE-vo-9Q7">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIE-vo-9Q7">
                                 <rect key="frame" x="170" y="429" width="261" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="I5G-Cb-RJz"/>
@@ -49,7 +49,7 @@
                                     <action selector="login:" destination="OzC-DJ-vIS" eventType="touchUpInside" id="IXn-O4-Cmn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHA-Dn-eaO">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHA-Dn-eaO">
                                 <rect key="frame" x="170" y="496" width="261" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="WUI-S8-Qam"/>
@@ -102,28 +102,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SJm-l4-Hcp">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SJm-l4-Hcp">
                                 <rect key="frame" x="16" y="316" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UIp-tn-HqO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UIp-tn-HqO">
                                 <rect key="frame" x="16" y="392" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="join"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="C7e-8A-Fdy">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="C7e-8A-Fdy">
                                 <rect key="frame" x="16" y="354" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oreo" translatesAutoresizingMaskIntoConstraints="NO" id="uwH-3T-iVv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="oreo" translatesAutoresizingMaskIntoConstraints="NO" id="uwH-3T-iVv">
                                 <rect key="frame" x="183" y="80" width="234" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uwH-3T-iVv" secondAttribute="height" multiplier="48:41" id="ztJ-wH-M21"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKo-Va-O7m">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKo-Va-O7m">
                                 <rect key="frame" x="192" y="441" width="216" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="JKC-nF-ZtU"/>
@@ -180,7 +180,7 @@
                     <connections>
                         <segue destination="Fdm-6m-W0d" kind="relationship" relationship="viewControllers" id="yMA-nn-c9g"/>
                         <segue destination="yjT-z1-AAZ" kind="relationship" relationship="viewControllers" id="eAx-gv-P8i"/>
-                        <segue destination="74E-Qj-enI" kind="relationship" relationship="viewControllers" id="tIB-7O-L9a"/>
+                        <segue destination="43H-PS-ffe" kind="relationship" relationship="viewControllers" id="mFs-yg-Irp"/>
                         <segue destination="UQC-aV-2hv" kind="relationship" relationship="viewControllers" id="ggU-m5-mQz"/>
                         <segue destination="sHi-Ji-bie" kind="relationship" relationship="viewControllers" id="fFI-ze-nt5"/>
                     </connections>
@@ -188,28 +188,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XBg-iz-dfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1535" y="475"/>
-        </scene>
-        <!--Photo-->
-        <scene sceneID="9Ml-Is-5Zl">
-            <objects>
-                <viewController title="Photo" id="74E-Qj-enI" customClass="CameraViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Sgk-g6-cWq"/>
-                        <viewControllerLayoutGuide type="bottom" id="khc-5U-pDi"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1gB-t0-DAV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="qfD-ga-Z3Z"/>
-                    <connections>
-                        <segue destination="43H-PS-ffe" kind="show" identifier="CapturedPhotoSegue" id="y3k-dZ-zL4"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ACX-ED-FyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1093" y="1304"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="peW-08-jcB">
@@ -422,10 +400,10 @@
             </objects>
             <point key="canvasLocation" x="3121" y="258"/>
         </scene>
-        <!--Post View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="SE8-RZ-hhD">
             <objects>
-                <viewController id="43H-PS-ffe" customClass="PostViewController" sceneMemberID="viewController">
+                <viewController id="43H-PS-ffe" customClass="CameraViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pVy-Ve-mgc"/>
                         <viewControllerLayoutGuide type="bottom" id="JAG-lg-aN3"/>
@@ -476,14 +454,14 @@
                             <constraint firstItem="0PD-Vj-P2C" firstAttribute="trailing" secondItem="dFP-sx-JaO" secondAttribute="trailing" id="x4v-JD-KQ6"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="DYE-zr-RuO"/>
                     <connections>
-                        <outlet property="imageView" destination="mbo-S2-PbX" id="ECJ-wE-D18"/>
-                        <outlet property="textView" destination="dFP-sx-JaO" id="YGK-nZ-zY6"/>
+                        <outlet property="imageView" destination="mbo-S2-PbX" id="v2i-UE-qzV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5l-hD-Ip6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1768" y="1304"/>
+            <point key="canvasLocation" x="1213" y="1264"/>
         </scene>
         <!--ExploreFeature-->
         <scene sceneID="fAx-Ie-j0E">

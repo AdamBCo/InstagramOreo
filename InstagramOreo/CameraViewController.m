@@ -7,11 +7,10 @@
 //
 
 #import "CameraViewController.h"
-#import "PostViewController.h"
 
 @interface CameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property UIImagePickerController *imagePicker;
-@property UIImage *photo;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -20,35 +19,38 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     
-    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        
-        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                              message:@"Device has no camera"
-                                                             delegate:nil
-                                                    cancelButtonTitle:@"OK"
-                                                    otherButtonTitles: nil];
-        
-        [myAlertView show];
-        
-    } else{
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        picker.allowsEditing = YES;
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        
-        [self presentViewController:picker animated:YES completion:NULL];
-        
-    }
+    [self presentViewController:picker animated:YES completion:NULL];
     
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+}
+
+//- (IBAction)selectPhoto:(UIButton *)sender {
+//    
+//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//    picker.delegate = self;
+//    picker.allowsEditing = YES;
+//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    
+//    [self presentViewController:picker animated:YES completion:NULL];
+//    
+//    
+//}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.photo = chosenImage;
+    self.imageView.image = chosenImage;
+    
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    [self performSegueWithIdentifier:@"CapturedPhotoSegue" sender:self];
     
 }
 
@@ -58,9 +60,5 @@
     
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    PostViewController *viewController = segue.destinationViewController;
-    viewController.capturedImage = self.photo;
-}
 
 @end
