@@ -8,6 +8,7 @@
 
 #import "ExploreCollectionViewController.h"
 #import "PhotoCollectionViewCell.h"
+#import "ExplorePhotoDetailViewController.h"
 #import <Parse/Parse.h>
 
 @interface ExploreCollectionViewController () <UICollectionViewDelegateFlowLayout>
@@ -65,24 +66,23 @@ static NSString * const reuseIdentifier = @"CollectionCell";
     return self.photos.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
-    static NSString *identifier = @"Cell";
-    PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    cell.textLabel.text = object[@"title"];
-    
-    PFFile *thumbnail = object[@"thumbnail"];
-    cell.imageView.image = [UIImage imageNamed:@"placeholder.jpg"];
-    cell.imageView.file = thumbnail;
-    return cell;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.photoImage.image = [UIImage imageWithData:[self.photos objectAtIndex:indexPath.row]];
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+    if ([segue.identifier isEqualToString:@"ExplorePhotoDetailSegue"])
+    {
+        //UINavigationController *nc = segue.destinationViewController;
+        ExplorePhotoDetailViewController *detailViewController = segue.destinationViewController;
+        NSData *selectedPhotoData = [self.photos objectAtIndex:indexPath.item];
+        detailViewController.selectedObject = selectedPhotoData;
+    }
 }
 
 #pragma mark - Collection View Flow Delegate Methods

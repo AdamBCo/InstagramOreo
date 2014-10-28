@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		343D7B2919FF38D6009B7BCF /* NSString+Trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 343D7B2819FF38D6009B7BCF /* NSString+Trim.m */; };
+		344A99201A001EB400C24B46 /* ExplorePhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 344A991F1A001EB400C24B46 /* ExplorePhotoDetailViewController.m */; };
+		344A99231A001EFD00C24B46 /* ExplorePhotosTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 344A99221A001EFD00C24B46 /* ExplorePhotosTableViewCell.m */; };
 		6619896A19FEC73B00F6C11A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619896919FEC73B00F6C11A /* main.m */; };
 		6619896D19FEC73B00F6C11A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619896C19FEC73B00F6C11A /* AppDelegate.m */; };
 		6619897019FEC73B00F6C11A /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619896F19FEC73B00F6C11A /* SignUpViewController.m */; };
@@ -55,6 +57,10 @@
 /* Begin PBXFileReference section */
 		343D7B2719FF38D6009B7BCF /* NSString+Trim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Trim.h"; sourceTree = "<group>"; };
 		343D7B2819FF38D6009B7BCF /* NSString+Trim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Trim.m"; sourceTree = "<group>"; };
+		344A991E1A001EB400C24B46 /* ExplorePhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplorePhotoDetailViewController.h; sourceTree = "<group>"; };
+		344A991F1A001EB400C24B46 /* ExplorePhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExplorePhotoDetailViewController.m; sourceTree = "<group>"; };
+		344A99211A001EFD00C24B46 /* ExplorePhotosTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplorePhotosTableViewCell.h; sourceTree = "<group>"; };
+		344A99221A001EFD00C24B46 /* ExplorePhotosTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExplorePhotosTableViewCell.m; sourceTree = "<group>"; };
 		6619896419FEC73B00F6C11A /* InstagramOreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramOreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6619896819FEC73B00F6C11A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6619896919FEC73B00F6C11A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -165,6 +171,10 @@
 				661989AC19FEDE3100F6C11A /* ExploreCollectionViewController.m */,
 				661989C619FEFF0C00F6C11A /* PhotoCollectionViewCell.h */,
 				661989C719FEFF0C00F6C11A /* PhotoCollectionViewCell.m */,
+				344A991E1A001EB400C24B46 /* ExplorePhotoDetailViewController.h */,
+				344A991F1A001EB400C24B46 /* ExplorePhotoDetailViewController.m */,
+				344A99211A001EFD00C24B46 /* ExplorePhotosTableViewCell.h */,
+				344A99221A001EFD00C24B46 /* ExplorePhotosTableViewCell.m */,
 			);
 			name = "Explore Collection View Cell";
 			sourceTree = "<group>";
@@ -401,6 +411,8 @@
 				661989B319FEE26E00F6C11A /* NotificationsTableViewController.m in Sources */,
 				661989C019FEE6FD00F6C11A /* PhotoProfileCollectionTableViewCell.m in Sources */,
 				6619896A19FEC73B00F6C11A /* main.m in Sources */,
+				344A99231A001EFD00C24B46 /* ExplorePhotosTableViewCell.m in Sources */,
+				344A99201A001EB400C24B46 /* ExplorePhotoDetailViewController.m in Sources */,
 				343D7B2919FF38D6009B7BCF /* NSString+Trim.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
