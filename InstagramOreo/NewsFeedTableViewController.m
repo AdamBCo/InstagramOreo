@@ -12,6 +12,7 @@
 
 @interface NewsFeedTableViewController ()
 @property NSArray *arrayOfPhotoObjects;
+@property UIRefreshControl *refreshControl;
 
 @end
 
@@ -19,6 +20,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //Refresh Control
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self action:@selector(downloadAllImages) forControlEvents:UIControlEventValueChanged];
+    [self setRefreshControl:self.refreshControl];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -56,7 +63,6 @@
     return self.arrayOfPhotoObjects.count;
 }
 
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     PFObject *photoObject = [self.arrayOfPhotoObjects objectAtIndex:indexPath.row];
@@ -74,10 +80,17 @@
     [query orderByDescending:@"createdAt"];
     [query whereKey:@"user" equalTo:user];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        self.arrayOfPhotoObjects = [NSArray arrayWithArray:objects];
-        [self.tableView reloadData];
+        if (objects.count > 0) {
+            self.arrayOfPhotoObjects = [NSArray arrayWithArray:objects];
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+        } else if (error){
+            NSLog(@"Error: %@",error);
+            [self.refreshControl endRefreshing];
+        }
     }];
 }
+
 
 
                 

@@ -82,8 +82,6 @@ static NSString * const reuseIdentifier = @"CollectionCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     UIImage *collectionImage = [UIImage imageWithData:self.photos.firstObject];
-    //collectionImage.size = CGSizeMake(collectionView.bounds.size.width, collectionView.bounds.size.height);
-    //NSLog(@"image %@", collectionImage);
     cell.photoImage.image = [UIImage imageWithData:[self.photos objectAtIndex:indexPath.row]];
     [cell.photoImage sizeToFit];
     return cell;
