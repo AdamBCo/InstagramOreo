@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/adambco/instagramoreo.png?label=ready&title=Ready)](https://waffle.io/adambco/instagramoreo)
 # InstagramOreo
 ## Week of 10/27/2014 App Challenge
 
