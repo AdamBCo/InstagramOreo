@@ -39,7 +39,6 @@
 		661989C819FEFF0C00F6C11A /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989C719FEFF0C00F6C11A /* PhotoCollectionViewCell.m */; };
 		661989CB19FF037700F6C11A /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989CA19FF037700F6C11A /* CameraViewController.m */; };
 		661989CE19FF068200F6C11A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989CD19FF068200F6C11A /* LoginViewController.m */; };
-		661989D119FF1F6700F6C11A /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989D019FF1F6700F6C11A /* PostViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,8 +103,6 @@
 		661989CA19FF037700F6C11A /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		661989CC19FF068200F6C11A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		661989CD19FF068200F6C11A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		661989CF19FF1F6700F6C11A /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
-		661989D019FF1F6700F6C11A /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,8 +171,6 @@
 				6619896C19FEC73B00F6C11A /* AppDelegate.m */,
 				343D7B2619FF2990009B7BCF /* Login & Signup */,
 				6619897119FEC73B00F6C11A /* Main.storyboard */,
-				661989CF19FF1F6700F6C11A /* PostViewController.h */,
-				661989D019FF1F6700F6C11A /* PostViewController.m */,
 				661989C919FF037700F6C11A /* CameraViewController.h */,
 				661989CA19FF037700F6C11A /* CameraViewController.m */,
 				661989C619FEFF0C00F6C11A /* PhotoCollectionViewCell.h */,
@@ -385,7 +380,6 @@
 				661989B319FEE26E00F6C11A /* NotificationsTableViewController.m in Sources */,
 				661989C019FEE6FD00F6C11A /* PhotoProfileCollectionTableViewCell.m in Sources */,
 				6619896A19FEC73B00F6C11A /* main.m in Sources */,
-				661989D119FF1F6700F6C11A /* PostViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
