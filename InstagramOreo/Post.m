@@ -10,19 +10,60 @@
 #import <Parse/PFObject+Subclass.h>
 
 @implementation Post
+
 @dynamic caption;
 @dynamic profileImage;
+@dynamic timeCreatedString;
 @dynamic standardImage;
-@dynamic timeCreated;
+@dynamic numberOfLikes;
+@dynamic user;
+@dynamic commentsArray;
+@dynamic userName;
 
 
 + (NSString *)parseClassName{
-    return @"Post";
+    return @"UserPhoto";
 }
 
 + (void)load{
     [self registerSubclass];
 }
+
+-(NSString *)caption{
+    return [self objectForKey:@"caption"];
+}
+
+-(void)standardImageWithCompletionBlock:(void(^)(UIImage *))completionBlock {
+    
+    PFFile *file = [self objectForKey:@"imageFile"];
+    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        completionBlock([UIImage imageWithData:data]);
+    }];
+}
+
+
+-(PFUser *)user{
+    return [self objectForKey:@"user"];
+}
+
+-(NSString *)userName{
+//    PFUser *user = [self objectForKey:@"user"];
+//    NSLog(@"%@",user.username);
+    return @"Hello";
+}
+
+-(NSString *)timeCreatedString{
+    NSDate *date = self.createdAt;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
+    NSString *creationDate = [dateFormat stringFromDate:date];
+    return creationDate;
+    
+}
+
+
+
+
 
 
 

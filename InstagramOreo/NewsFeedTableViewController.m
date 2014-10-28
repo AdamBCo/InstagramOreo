@@ -9,6 +9,7 @@
 #import "NewsFeedTableViewController.h"
 #import "NewsFeedTableViewCell.h"
 #import <Parse/Parse.h>
+#import "Post.h"
 
 @interface NewsFeedTableViewController ()
 @property NSArray *arrayOfPhotoObjects;
@@ -21,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //Refresh Control
     self.refreshControl = [UIRefreshControl new];
     [self.refreshControl addTarget:self action:@selector(downloadAllImages) forControlEvents:UIControlEventValueChanged];
     [self setRefreshControl:self.refreshControl];
@@ -65,47 +65,34 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    PFObject *photoObject = [self.arrayOfPhotoObjects objectAtIndex:indexPath.row];
+    Post *photoPost = [self.arrayOfPhotoObjects objectAtIndex:indexPath.row];
     NewsFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsFeedCell"];
-    cell.capturedPhoto.file = [photoObject objectForKey:@"imageFile"];
-    cell.photoCaptionTextView.text = [photoObject objectForKey:@"caption"];
-    
-    
-    //TimeCreated
-    NSDate *date = photoObject.createdAt;
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
-    NSString *creationDate = [dateFormat stringFromDate:date];
-    cell.timeLabel.text = creationDate;
-    
-    [cell.capturedPhoto loadInBackground];
+    cell.userNameLabel.text = photoPost.userName;
+    [photoPost standardImageWithCompletionBlock:^(UIImage *photo) {
+        cell.capturedPhoto.image = photo;
+    }];
+    cell.photoCaptionTextView.text = photoPost.caption;
+    cell.timeLabel.text = photoPost.timeCreatedString;
     return cell;
 }
 
-
-
-
-
-
-
-
-
 - (void)downloadAllImages{
     PFUser *user = [PFUser currentUser];
-    PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto"];
-    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
-    [query orderByDescending:@"createdAt"];
-    [query whereKey:@"user" equalTo:user];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (objects.count > 0) {
-            self.arrayOfPhotoObjects = [NSArray arrayWithArray:objects];
-            [self.tableView reloadData];
-            [self.refreshControl endRefreshing];
-        } else if (error){
+    PFQuery *postQuery = [PFQuery queryWithClassName:[Post parseClassName]];
+    postQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery whereKey:@"user" equalTo:user];
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
             NSLog(@"Error: %@",error);
+            [self.refreshControl endRefreshing];
+        }else{
+            self.arrayOfPhotoObjects = objects;
+            [self.tableView reloadData];
             [self.refreshControl endRefreshing];
         }
     }];
+    
 }
 
 

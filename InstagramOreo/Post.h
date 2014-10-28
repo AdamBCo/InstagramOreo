@@ -10,9 +10,16 @@
 #import <Parse/Parse.h>
 
 @interface Post :PFObject <PFSubclassing>
+
 @property NSString *caption;
 @property PFFile * profileImage;
 @property PFFile *standardImage;
-@property NSDate *timeCreated;
+@property NSString *timeCreatedString;
+@property NSNumber *numberOfLikes;
+@property PFUser *user;
+@property NSArray *commentsArray;
+@property NSString *userName;
+
+-(void)standardImageWithCompletionBlock:(void(^)(UIImage *))completionBlock;
 
 @end
