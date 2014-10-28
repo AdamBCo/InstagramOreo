@@ -57,10 +57,11 @@
     return self.photoPosts.count;
 }
 
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NewsFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsFeedCell"];
-    cell.capturedPhoto.image = [UIImage imageWithData:[self.photoPosts objectAtIndex:indexPath.row]];
+    cell.capturedPhoto.image = [self.photoPosts objectForKey:@"imageFile"];
     cell.photoCaptionTextView.text = [self.photoTexts objectAtIndex:indexPath.row];
     return cell;
 }

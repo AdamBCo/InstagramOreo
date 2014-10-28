@@ -70,6 +70,20 @@ static NSString * const reuseIdentifier = @"CollectionCell";
     return self.photos.count;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
+    static NSString *identifier = @"Cell";
+    PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    cell.textLabel.text = object[@"title"];
+    
+    PFFile *thumbnail = object[@"thumbnail"];
+    cell.imageView.image = [UIImage imageNamed:@"placeholder.jpg"];
+    cell.imageView.file = thumbnail;
+    return cell;
+}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     UIImage *collectionImage = [UIImage imageWithData:self.photos.firstObject];
