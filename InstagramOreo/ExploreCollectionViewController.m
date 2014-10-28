@@ -80,7 +80,7 @@ static NSString * const reuseIdentifier = @"CollectionCell";
     return self.photos.count;
 }
 
-- (PhotoCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PhotoCollectionViewCell *cell = (PhotoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     UIImage *imaged = [UIImage imageWithData:self.photos.firstObject];
     //NSLog(@"imag %@",imaged.description);
