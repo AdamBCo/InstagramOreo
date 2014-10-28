@@ -9,7 +9,8 @@
 #import "CameraViewController.h"
 #import <Parse/Parse.h>
 
-@interface CameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate, UIAlertViewDelegate>
+
 @property UIImagePickerController *imagePicker;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -23,12 +24,27 @@
 {
     [super viewDidLoad];
     self.takePhoto = YES;
-    
+    //self.tabBarItem.tag = 2;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
-    if (self.takePhoto == YES) {
+    //[self showCamera];
+    self.tabBarController.delegate = self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // Set tabBarController's delegate to nil when view disapears otherwise taping on any other tab will also
+    // call showCamera
+    self.tabBarController.delegate = nil;
+}
+
+- (void)showCamera
+{
+    if (self.takePhoto == YES)
+    {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
         picker.allowsEditing = YES;
@@ -37,10 +53,15 @@
         [self presentViewController:picker animated:YES completion:NULL];
         self.takePhoto = NO;
     }
-    
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    [self showCamera];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     UITouch * touch = [touches anyObject];
     if(touch.phase == UITouchPhaseBegan) {
         [self.textView resignFirstResponder];
@@ -59,59 +80,73 @@
 //    
 //}
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.imageView.image = chosenImage;
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    
 }
 
--(void)uploadImage{
+-(void)uploadImage
+{
+    if (self.imageView.image != nil)
+    {
+        NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.05f);
 
-    NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.05f);
-    
-    PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
-    
-    NSString *caption = self.textView.text;
+        PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
 
-    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            
-            PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
-            [userPhoto setObject:imageFile forKey:@"imageFile"];
-            [userPhoto setObject:caption forKey:@"caption"];
-            
-//            userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
-            
-            PFUser *user = [PFUser currentUser];
-            [userPhoto setObject:user forKey:@"user"];
-            
-            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (!error) {
-                    
-                    NSLog(@"IT WAS Posted!!");
-                    [self.navigationController popToRootViewControllerAnimated:YES];
-                    self.takePhoto = YES;
-                }
-                else{
-                    NSLog(@"Error: %@ %@", error, [error userInfo]);
-                }
-            }];
-        }
-        else{
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+        NSString *caption = self.textView.text;
+
+        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+
+                PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
+                [userPhoto setObject:imageFile forKey:@"imageFile"];
+                [userPhoto setObject:caption forKey:@"caption"];
+
+                //            userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+
+                PFUser *user = [PFUser currentUser];
+                [userPhoto setObject:user forKey:@"user"];
+
+                [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (!error) {
+
+                        NSLog(@"IT WAS Posted!!");
+                        [self.navigationController popToRootViewControllerAnimated:YES];
+                        self.takePhoto = YES;
+                    }
+                    else{
+                        NSLog(@"Error: %@ %@", error, [error userInfo]);
+                    }
+                }];
+            }
+            else{
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Take A Photo!"
+                                                           message:@"You can't upload a photo if you didn't take or choose a photo..."
+                                                          delegate:self
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles:nil, nil];
+        alertView.delegate = self;
+        [alertView show];
+    }
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    
+    self.takePhoto = YES;
 }
-- (IBAction)postImage:(id)sender {
+
+- (IBAction)postImage:(id)sender
+{
     [self uploadImage];
 }
 
