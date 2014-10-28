@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "NSString+Trim.h"
 #import <Parse/Parse.h>
 
 @interface LoginViewController ()
@@ -43,8 +44,8 @@
 }
 
 - (IBAction)login:(id)sender {
-    NSString *username = [self.usernameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString *password = [self.passwordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *username = [self.usernameTextField.text trim];
+    NSString *password = [self.passwordTextField.text trim];
     
     if ([username length] == 0 || [password length] == 0) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Missing Info"
