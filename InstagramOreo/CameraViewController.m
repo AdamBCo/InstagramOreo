@@ -25,13 +25,11 @@
 {
     [super viewDidLoad];
     self.takePhoto = YES;
-    //self.tabBarItem.tag = 2;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //[self showCamera];
     self.tabBarController.delegate = self;
 }
 
@@ -85,8 +83,6 @@
 {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.imageView.image = chosenImage;
-<<<<<<< HEAD
-    
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -139,58 +135,10 @@
         alertView.delegate = self;
         [alertView show];
     }
-=======
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
     [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
-
--(void)uploadImage{
-
-    NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.05f);
-    PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
-    NSString *caption = self.textView.text;
-
-    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            
-            PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
-            [userPhoto setObject:imageFile forKey:@"imageFile"];
-            [userPhoto setObject:caption forKey:@"caption"];
-            [userPhoto setObject:0 forKey:@"numberOfLikes"];
-            
-            PFACL *photoACL = [PFACL ACLWithUser:[PFUser currentUser]];
-            [photoACL setPublicReadAccess:YES];
-            userPhoto.ACL = photoACL;
-            
-            PFUser *user = [PFUser currentUser];
-            [userPhoto setObject:user forKey:@"user"];
-            
-            //We setup a background task to allow for the image to upload, when the phone turns off.
-            self.backgroundTaskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-                [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskId];
-            }];
-            
-            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (!error) {
-                    
-                    [self.navigationController popToRootViewControllerAnimated:YES];
-                    self.takePhoto = YES;
-                    [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskId];
-                    NSLog(@"Image was posted Successfully");
-                }
-                else{
-                    NSLog(@"Error: %@ %@", error, [error userInfo]);
-                }
-            }];
-        }
-        else{
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
->>>>>>> 04a90063ba7d10e973a8656b1b191f71adffdffd
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
