@@ -11,8 +11,7 @@
 #import <Parse/Parse.h>
 
 @interface NewsFeedTableViewController ()
-@property NSArray *photoPosts;
-@property NSArray *photoTexts;
+@property NSArray *arrayOfPhotoObjects;
 
 @end
 
@@ -54,40 +53,29 @@
 #pragma mark - Table view data source
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.photoPosts.count;
+    return self.arrayOfPhotoObjects.count;
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    PFObject *photoObject = [self.arrayOfPhotoObjects objectAtIndex:indexPath.row];
     NewsFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsFeedCell"];
-   // cell.capturedPhoto.image = [self.photoPosts objectForKey:@"imageFile"];
-    cell.photoCaptionTextView.text = [self.photoTexts objectAtIndex:indexPath.row];
+    cell.capturedPhoto.file = [photoObject objectForKey:@"imageFile"];
+    [cell.capturedPhoto loadInBackground];
+    cell.photoCaptionTextView.text = [self.arrayOfPhotoObjects objectAtIndex:indexPath.row];
     return cell;
 }
 
-- (void)downloadAllImages
-{
+- (void)downloadAllImages{
+    PFUser *user = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto"];
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     [query orderByDescending:@"createdAt"];
-    PFUser *user = [PFUser currentUser];
     [query whereKey:@"user" equalTo:user];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSMutableArray *newObjectIDArray = [NSMutableArray array];
-        NSMutableArray *photoArray = [NSMutableArray array];
-        if (objects.count > 0) {
-            for (PFObject *eachObject in objects) {
-                [newObjectIDArray addObject:[eachObject objectId]];
-                PFFile *file = [eachObject objectForKey:@"imageFile"];
-                [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                    [photoArray addObject:data];
-                    NSLog(@"Data: %@",data);
-                }];
-                self.photoPosts = [NSArray arrayWithArray:photoArray];
-                [self.tableView reloadData];
-            }
-        }
+        self.arrayOfPhotoObjects = [NSArray arrayWithArray:objects];
+        [self.tableView reloadData];
     }];
 }
 
