@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface NewsFeedTableViewCell : UITableViewCell
-@property UIImage *profileImage;
-@property UITextView * photoCaption;
-@property NSDate *timeCaptured;
-@property UIImage *capturedPhoto;
+@property (weak, nonatomic) IBOutlet UIImageView *capturedPhoto;
+@property (weak, nonatomic) IBOutlet UIButton *profileImageButton;
+@property (weak, nonatomic) IBOutlet UITextView *photoCaptionTextView;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+
 
 @end
