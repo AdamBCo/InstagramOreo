@@ -158,6 +158,17 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		343D7B2D19FF4B19009B7BCF /* Explore Collection View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				661989AB19FEDE3100F6C11A /* ExploreCollectionViewController.h */,
+				661989AC19FEDE3100F6C11A /* ExploreCollectionViewController.m */,
+				661989C619FEFF0C00F6C11A /* PhotoCollectionViewCell.h */,
+				661989C719FEFF0C00F6C11A /* PhotoCollectionViewCell.m */,
+			);
+			name = "Explore Collection View Cell";
+			sourceTree = "<group>";
+		};
 		6619895B19FEC73B00F6C11A = {
 			isa = PBXGroup;
 			children = (
@@ -185,13 +196,10 @@
 				6619897119FEC73B00F6C11A /* Main.storyboard */,
 				661989C919FF037700F6C11A /* CameraViewController.h */,
 				661989CA19FF037700F6C11A /* CameraViewController.m */,
-				661989C619FEFF0C00F6C11A /* PhotoCollectionViewCell.h */,
-				661989C719FEFF0C00F6C11A /* PhotoCollectionViewCell.m */,
 				661989C119FEE70700F6C11A /* Profile View Controller */,
 				661989B719FEE67800F6C11A /* Notification Table View */,
 				661989C219FEE71B00F6C11A /* News Feed Table View */,
-				661989AB19FEDE3100F6C11A /* ExploreCollectionViewController.h */,
-				661989AC19FEDE3100F6C11A /* ExploreCollectionViewController.m */,
+				343D7B2D19FF4B19009B7BCF /* Explore Collection View Cell */,
 				343D7B2A19FF3946009B7BCF /* Categories */,
 				661989C319FEE8DA00F6C11A /* Post.h */,
 				661989C419FEE8DA00F6C11A /* Post.m */,

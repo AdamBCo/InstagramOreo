@@ -480,7 +480,7 @@
         <!--ExploreFeature-->
         <scene sceneID="fAx-Ie-j0E">
             <objects>
-                <collectionViewController title="ExploreFeature" id="yjT-z1-AAZ" sceneMemberID="viewController">
+                <collectionViewController title="ExploreFeature" id="yjT-z1-AAZ" customClass="ExploreCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="xTD-DG-tgy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
