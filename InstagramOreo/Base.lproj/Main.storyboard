@@ -190,7 +190,7 @@
             </objects>
             <point key="canvasLocation" x="1535" y="475"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="peW-08-jcB">
             <objects>
                 <viewController id="sHi-Ji-bie" customClass="ProfileViewController" sceneMemberID="viewController">
@@ -203,13 +203,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="GQy-6c-nDJ"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="user" id="GQy-6c-nDJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8KQ-l1-occ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1562" y="-437"/>
         </scene>
-        <!--Notifications Table View Controller-->
+        <!--Notifications-->
         <scene sceneID="H3B-4u-mOO">
             <objects>
                 <tableViewController id="UQC-aV-2hv" customClass="NotificationsTableViewController" sceneMemberID="viewController">
@@ -284,7 +284,7 @@
                             <outlet property="delegate" destination="UQC-aV-2hv" id="zyY-ei-pR8"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" systemItem="mostRecent" id="fVR-II-42d"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="notification" id="fVR-II-42d"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3R-6P-ZCd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -461,7 +461,7 @@
                             <constraint firstItem="0PD-Vj-P2C" firstAttribute="trailing" secondItem="dFP-sx-JaO" secondAttribute="trailing" id="x4v-JD-KQ6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="more" id="DYE-zr-RuO"/>
+                    <tabBarItem key="tabBarItem" title="" image="camera" id="DYE-zr-RuO"/>
                     <connections>
                         <outlet property="imageView" destination="mbo-S2-PbX" id="v2i-UE-qzV"/>
                     </connections>
@@ -507,17 +507,17 @@
                             <outlet property="delegate" destination="yjT-z1-AAZ" id="PFj-Y9-e29"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" systemItem="history" id="R0g-WO-lzi"/>
+                    <tabBarItem key="tabBarItem" title="Explore" image="gift" id="R0g-WO-lzi"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBA-7a-4la" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2301" y="930"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--News Feed-->
         <scene sceneID="7A6-mI-8b1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fdm-6m-W0d" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="zhQ-eK-fJ3"/>
+                    <tabBarItem key="tabBarItem" title="News Feed" image="newspaper" id="zhQ-eK-fJ3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RAj-DV-oTY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -534,6 +534,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera" width="25" height="20"/>
+        <image name="gift" width="22" height="25"/>
+        <image name="newspaper" width="25" height="18"/>
+        <image name="notification" width="25" height="25"/>
         <image name="oreo" width="200" height="200"/>
+        <image name="user" width="25" height="24"/>
     </resources>
 </document>
