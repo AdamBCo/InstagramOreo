@@ -7,7 +7,23 @@
 //
 
 #import "Post.h"
+#import <Parse/PFObject+Subclass.h>
 
 @implementation Post
+@dynamic caption;
+@dynamic profileImage;
+@dynamic standardImage;
+@dynamic timeCreated;
+
+
++ (NSString *)parseClassName{
+    return @"Post";
+}
+
++ (void)load{
+    [self registerSubclass];
+}
+
+
 
 @end

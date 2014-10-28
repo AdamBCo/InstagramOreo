@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface Post : NSObject
-
+@interface Post :PFObject <PFSubclassing>
+@property NSString *caption;
+@property PFFile * profileImage;
+@property PFFile *standardImage;
+@property NSDate *timeCreated;
 
 @end
