@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6619896A19FEC73B00F6C11A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619896919FEC73B00F6C11A /* main.m */; };
 		6619896D19FEC73B00F6C11A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619896C19FEC73B00F6C11A /* AppDelegate.m */; };
-		6619897019FEC73B00F6C11A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619896F19FEC73B00F6C11A /* LoginViewController.m */; };
+		6619897019FEC73B00F6C11A /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619896F19FEC73B00F6C11A /* SignUpViewController.m */; };
 		6619897319FEC73B00F6C11A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6619897119FEC73B00F6C11A /* Main.storyboard */; };
 		6619897519FEC73B00F6C11A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6619897419FEC73B00F6C11A /* Images.xcassets */; };
 		6619897819FEC73B00F6C11A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6619897619FEC73B00F6C11A /* LaunchScreen.xib */; };
@@ -31,6 +31,14 @@
 		661989AD19FEDE3100F6C11A /* ExploreCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989AC19FEDE3100F6C11A /* ExploreCollectionViewController.m */; };
 		661989B019FEE24D00F6C11A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989AF19FEE24D00F6C11A /* ProfileViewController.m */; };
 		661989B319FEE26E00F6C11A /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989B219FEE26E00F6C11A /* NotificationsTableViewController.m */; };
+		661989B619FEE64500F6C11A /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989B519FEE64500F6C11A /* NotificationTableViewCell.m */; };
+		661989BA19FEE6B900F6C11A /* UserProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989B919FEE6B900F6C11A /* UserProfileTableViewCell.m */; };
+		661989BD19FEE6E700F6C11A /* ProfilePhotoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989BC19FEE6E700F6C11A /* ProfilePhotoListTableViewCell.m */; };
+		661989C019FEE6FD00F6C11A /* PhotoProfileCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989BF19FEE6FD00F6C11A /* PhotoProfileCollectionTableViewCell.m */; };
+		661989C519FEE8DA00F6C11A /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989C419FEE8DA00F6C11A /* Post.m */; };
+		661989C819FEFF0C00F6C11A /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989C719FEFF0C00F6C11A /* PhotoCollectionViewCell.m */; };
+		661989CB19FF037700F6C11A /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989CA19FF037700F6C11A /* CameraViewController.m */; };
+		661989CE19FF068200F6C11A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989CD19FF068200F6C11A /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +57,8 @@
 		6619896919FEC73B00F6C11A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6619896B19FEC73B00F6C11A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6619896C19FEC73B00F6C11A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6619896E19FEC73B00F6C11A /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		6619896F19FEC73B00F6C11A /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		6619896E19FEC73B00F6C11A /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		6619896F19FEC73B00F6C11A /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		6619897219FEC73B00F6C11A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6619897419FEC73B00F6C11A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6619897719FEC73B00F6C11A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -79,6 +87,22 @@
 		661989AF19FEE24D00F6C11A /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		661989B119FEE26E00F6C11A /* NotificationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsTableViewController.h; sourceTree = "<group>"; };
 		661989B219FEE26E00F6C11A /* NotificationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewController.m; sourceTree = "<group>"; };
+		661989B419FEE64500F6C11A /* NotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCell.h; sourceTree = "<group>"; };
+		661989B519FEE64500F6C11A /* NotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewCell.m; sourceTree = "<group>"; };
+		661989B819FEE6B900F6C11A /* UserProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileTableViewCell.h; sourceTree = "<group>"; };
+		661989B919FEE6B900F6C11A /* UserProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileTableViewCell.m; sourceTree = "<group>"; };
+		661989BB19FEE6E700F6C11A /* ProfilePhotoListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePhotoListTableViewCell.h; sourceTree = "<group>"; };
+		661989BC19FEE6E700F6C11A /* ProfilePhotoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePhotoListTableViewCell.m; sourceTree = "<group>"; };
+		661989BE19FEE6FD00F6C11A /* PhotoProfileCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoProfileCollectionTableViewCell.h; sourceTree = "<group>"; };
+		661989BF19FEE6FD00F6C11A /* PhotoProfileCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoProfileCollectionTableViewCell.m; sourceTree = "<group>"; };
+		661989C319FEE8DA00F6C11A /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		661989C419FEE8DA00F6C11A /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		661989C619FEFF0C00F6C11A /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		661989C719FEFF0C00F6C11A /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		661989C919FF037700F6C11A /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		661989CA19FF037700F6C11A /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		661989CC19FF068200F6C11A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		661989CD19FF068200F6C11A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,19 +158,22 @@
 			children = (
 				6619896B19FEC73B00F6C11A /* AppDelegate.h */,
 				6619896C19FEC73B00F6C11A /* AppDelegate.m */,
-				6619896E19FEC73B00F6C11A /* LoginViewController.h */,
-				6619896F19FEC73B00F6C11A /* LoginViewController.m */,
+				6619896E19FEC73B00F6C11A /* SignUpViewController.h */,
+				6619896F19FEC73B00F6C11A /* SignUpViewController.m */,
+				661989CC19FF068200F6C11A /* LoginViewController.h */,
+				661989CD19FF068200F6C11A /* LoginViewController.m */,
 				6619897119FEC73B00F6C11A /* Main.storyboard */,
-				661989AE19FEE24D00F6C11A /* ProfileViewController.h */,
-				661989AF19FEE24D00F6C11A /* ProfileViewController.m */,
-				661989B119FEE26E00F6C11A /* NotificationsTableViewController.h */,
-				661989B219FEE26E00F6C11A /* NotificationsTableViewController.m */,
-				661989A519FEDDC600F6C11A /* NewsFeedTableViewController.h */,
-				661989A619FEDDC600F6C11A /* NewsFeedTableViewController.m */,
-				661989A819FEDE0400F6C11A /* NewsFeedTableViewCell.h */,
-				661989A919FEDE0400F6C11A /* NewsFeedTableViewCell.m */,
+				661989C919FF037700F6C11A /* CameraViewController.h */,
+				661989CA19FF037700F6C11A /* CameraViewController.m */,
+				661989C619FEFF0C00F6C11A /* PhotoCollectionViewCell.h */,
+				661989C719FEFF0C00F6C11A /* PhotoCollectionViewCell.m */,
+				661989C119FEE70700F6C11A /* Profile View Controller */,
+				661989B719FEE67800F6C11A /* Notification Table View */,
+				661989C219FEE71B00F6C11A /* News Feed Table View */,
 				661989AB19FEDE3100F6C11A /* ExploreCollectionViewController.h */,
 				661989AC19FEDE3100F6C11A /* ExploreCollectionViewController.m */,
+				661989C319FEE8DA00F6C11A /* Post.h */,
+				661989C419FEE8DA00F6C11A /* Post.m */,
 				6619897419FEC73B00F6C11A /* Images.xcassets */,
 				6619897619FEC73B00F6C11A /* LaunchScreen.xib */,
 				6619896719FEC73B00F6C11A /* Supporting Files */,
@@ -190,6 +217,43 @@
 				6619898219FEC73C00F6C11A /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		661989B719FEE67800F6C11A /* Notification Table View */ = {
+			isa = PBXGroup;
+			children = (
+				661989B119FEE26E00F6C11A /* NotificationsTableViewController.h */,
+				661989B219FEE26E00F6C11A /* NotificationsTableViewController.m */,
+				661989B419FEE64500F6C11A /* NotificationTableViewCell.h */,
+				661989B519FEE64500F6C11A /* NotificationTableViewCell.m */,
+			);
+			name = "Notification Table View";
+			sourceTree = "<group>";
+		};
+		661989C119FEE70700F6C11A /* Profile View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				661989AE19FEE24D00F6C11A /* ProfileViewController.h */,
+				661989AF19FEE24D00F6C11A /* ProfileViewController.m */,
+				661989B819FEE6B900F6C11A /* UserProfileTableViewCell.h */,
+				661989B919FEE6B900F6C11A /* UserProfileTableViewCell.m */,
+				661989BB19FEE6E700F6C11A /* ProfilePhotoListTableViewCell.h */,
+				661989BC19FEE6E700F6C11A /* ProfilePhotoListTableViewCell.m */,
+				661989BE19FEE6FD00F6C11A /* PhotoProfileCollectionTableViewCell.h */,
+				661989BF19FEE6FD00F6C11A /* PhotoProfileCollectionTableViewCell.m */,
+			);
+			name = "Profile View Controller";
+			sourceTree = "<group>";
+		};
+		661989C219FEE71B00F6C11A /* News Feed Table View */ = {
+			isa = PBXGroup;
+			children = (
+				661989A519FEDDC600F6C11A /* NewsFeedTableViewController.h */,
+				661989A619FEDDC600F6C11A /* NewsFeedTableViewController.m */,
+				661989A819FEDE0400F6C11A /* NewsFeedTableViewCell.h */,
+				661989A919FEDE0400F6C11A /* NewsFeedTableViewCell.m */,
+			);
+			name = "News Feed Table View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,13 +356,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				661989CB19FF037700F6C11A /* CameraViewController.m in Sources */,
+				661989C519FEE8DA00F6C11A /* Post.m in Sources */,
 				661989A719FEDDC600F6C11A /* NewsFeedTableViewController.m in Sources */,
-				6619897019FEC73B00F6C11A /* LoginViewController.m in Sources */,
+				6619897019FEC73B00F6C11A /* SignUpViewController.m in Sources */,
 				661989AD19FEDE3100F6C11A /* ExploreCollectionViewController.m in Sources */,
 				661989AA19FEDE0400F6C11A /* NewsFeedTableViewCell.m in Sources */,
+				661989BA19FEE6B900F6C11A /* UserProfileTableViewCell.m in Sources */,
+				661989B619FEE64500F6C11A /* NotificationTableViewCell.m in Sources */,
+				661989CE19FF068200F6C11A /* LoginViewController.m in Sources */,
+				661989C819FEFF0C00F6C11A /* PhotoCollectionViewCell.m in Sources */,
 				661989B019FEE24D00F6C11A /* ProfileViewController.m in Sources */,
 				6619896D19FEC73B00F6C11A /* AppDelegate.m in Sources */,
+				661989BD19FEE6E700F6C11A /* ProfilePhotoListTableViewCell.m in Sources */,
 				661989B319FEE26E00F6C11A /* NotificationsTableViewController.m in Sources */,
+				661989C019FEE6FD00F6C11A /* PhotoProfileCollectionTableViewCell.m in Sources */,
 				6619896A19FEC73B00F6C11A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

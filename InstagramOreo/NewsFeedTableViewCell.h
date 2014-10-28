@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface NewsFeedTableViewCell : UITableViewCell
+@property UIImage *profileImage;
+@property UITextView * photoCaption;
+@property NSDate *timeCaptured;
+@property UIImage *capturedPhoto;
 
 @end
