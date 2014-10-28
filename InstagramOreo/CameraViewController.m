@@ -44,40 +44,14 @@
 {
     if (self.takePhoto == YES)
     {
-//        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//        picker.delegate = self;
-//        picker.allowsEditing = YES;
-//        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//        
-//        [self presentViewController:picker animated:YES completion:NULL];
-//        self.takePhoto = NO;
-
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
         picker.allowsEditing = YES;
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
         [self presentViewController:picker animated:YES completion:NULL];
-
-//        overlay = [[CustomOverlayView alloc]initWithFrame:self.view.bounds];
-//        overlay.delegate = self;
-//        picker = [[UIImagePickerController alloc]init];
-//        picker.delegate = self;
-//        picker.navigationBarHidden = YES;
-//        picker.toolbarHidden = YES;
-//        picker.wantsFullScreenLayout = YES;
-//        picker.allowsEditing = YES;
-//        if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]){
-//
-//            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//        }
-//        else{
-//            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//        }
-//        picker.showsCameraControls = NO;
-//        picker.cameraOverlayView = overlay;
+        self.takePhoto = NO;
     }
-
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
