@@ -385,6 +385,12 @@
                                         <constraint firstItem="fee-1W-vFs" firstAttribute="top" secondItem="Jz8-ib-Fxi" secondAttribute="top" id="zdf-lI-WS5"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="capturedPhoto" destination="UBo-tC-Uyv" id="GKX-zU-b8f"/>
+                                    <outlet property="photoCaptionTextView" destination="qXL-RX-ecj" id="9Kr-SJ-v6g"/>
+                                    <outlet property="profileImageButton" destination="Jz8-ib-Fxi" id="Ovn-1x-c9f"/>
+                                    <outlet property="timeLabel" destination="fee-1W-vFs" id="gsX-eE-xTr"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -443,7 +449,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="postPhotoWithTextButtonPressed:" destination="43H-PS-ffe" eventType="touchUpInside" id="3NO-5h-War"/>
+                                    <action selector="postImage:" destination="43H-PS-ffe" eventType="touchUpInside" id="ghX-Lm-dt5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -464,6 +470,7 @@
                     <tabBarItem key="tabBarItem" systemItem="more" id="DYE-zr-RuO"/>
                     <connections>
                         <outlet property="imageView" destination="mbo-S2-PbX" id="v2i-UE-qzV"/>
+                        <outlet property="textView" destination="dFP-sx-JaO" id="a4H-Ko-LBZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5l-hD-Ip6" userLabel="First Responder" sceneMemberID="firstResponder"/>
