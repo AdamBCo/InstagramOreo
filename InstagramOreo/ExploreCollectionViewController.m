@@ -28,7 +28,6 @@ static NSString * const reuseIdentifier = @"CollectionCell";
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     [self loadPhotosToExplore];
 }
 
@@ -44,14 +43,19 @@ static NSString * const reuseIdentifier = @"CollectionCell";
             for (PFObject *eachObject in objects) {
                 [newObjectIDArray addObject:[eachObject objectId]];
                 PFFile *file = [eachObject objectForKey:@"imageFile"];
+                NSLog(@"Hello 3");
                 [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                     [photoArray addObject:data];
                     self.photos = [NSArray arrayWithArray:photoArray];
                     [self.collectionView reloadData];
+                    NSLog(@"Hello 4");
                 }];
+                NSLog(@"Hello 5");
             }
         }
+        NSLog(@"Hello 2");
     }];
+    NSLog(@"Hello 1");
 }
 
 
@@ -69,7 +73,7 @@ static NSString * const reuseIdentifier = @"CollectionCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     UIImage *collectionImage = [UIImage imageWithData:self.photos.firstObject];
-    NSLog(@"imag %@",collectionImage.description);
+    NSLog(@"image %@", collectionImage);
     cell.photoImage.image = [UIImage imageWithData:[self.photos objectAtIndex:indexPath.row]];
     return cell;
 }
