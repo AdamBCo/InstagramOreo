@@ -192,10 +192,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="qfD-ga-Z3Z"/>
+                    <connections>
+                        <segue destination="43H-PS-ffe" kind="show" identifier="CapturedPhotoSegue" id="y3k-dZ-zL4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACX-ED-FyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1256" y="1260"/>
+            <point key="canvasLocation" x="1093" y="1304"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="peW-08-jcB">
@@ -407,6 +410,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ln-ps-JbH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3121" y="258"/>
+        </scene>
+        <!--Post View Controller-->
+        <scene sceneID="SE8-RZ-hhD">
+            <objects>
+                <viewController id="43H-PS-ffe" customClass="PostViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pVy-Ve-mgc"/>
+                        <viewControllerLayoutGuide type="bottom" id="JAG-lg-aN3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mxg-s6-8gS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mbo-S2-PbX">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="304"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="304" id="t2q-H0-H89"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFP-sx-JaO">
+                                <rect key="frame" x="0.0" y="312" width="600" height="136"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PD-Vj-P2C">
+                                <rect key="frame" x="0.0" y="456" width="600" height="95"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="95" id="pR7-uV-zDW"/>
+                                </constraints>
+                                <state key="normal" title="Post">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postPhotoWithTextButtonPressed:" destination="43H-PS-ffe" eventType="touchUpInside" id="3NO-5h-War"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mbo-S2-PbX" firstAttribute="leading" secondItem="mxg-s6-8gS" secondAttribute="leading" id="1Ip-WK-Pv4"/>
+                            <constraint firstItem="dFP-sx-JaO" firstAttribute="top" secondItem="mbo-S2-PbX" secondAttribute="bottom" constant="8" symbolic="YES" id="497-2V-Tsj"/>
+                            <constraint firstItem="dFP-sx-JaO" firstAttribute="leading" secondItem="0PD-Vj-P2C" secondAttribute="leading" id="DJL-oj-Jqc"/>
+                            <constraint firstItem="mbo-S2-PbX" firstAttribute="top" secondItem="mxg-s6-8gS" secondAttribute="top" id="Dca-7F-eRu"/>
+                            <constraint firstItem="0PD-Vj-P2C" firstAttribute="top" secondItem="dFP-sx-JaO" secondAttribute="bottom" constant="8" symbolic="YES" id="LJR-JF-4cB"/>
+                            <constraint firstAttribute="trailing" secondItem="mbo-S2-PbX" secondAttribute="trailing" id="XXO-PP-Fug"/>
+                            <constraint firstItem="0PD-Vj-P2C" firstAttribute="bottom" secondItem="JAG-lg-aN3" secondAttribute="top" id="ZnF-gz-C4e"/>
+                            <constraint firstItem="mbo-S2-PbX" firstAttribute="leading" secondItem="dFP-sx-JaO" secondAttribute="leading" id="dbm-ZZ-VFe"/>
+                            <constraint firstItem="dFP-sx-JaO" firstAttribute="trailing" secondItem="mbo-S2-PbX" secondAttribute="trailing" id="o6O-DR-ygF"/>
+                            <constraint firstItem="0PD-Vj-P2C" firstAttribute="trailing" secondItem="dFP-sx-JaO" secondAttribute="trailing" id="x4v-JD-KQ6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="mbo-S2-PbX" id="ECJ-wE-D18"/>
+                        <outlet property="textView" destination="dFP-sx-JaO" id="YGK-nZ-zY6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z5l-hD-Ip6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1768" y="1304"/>
         </scene>
         <!--ExploreFeature-->
         <scene sceneID="fAx-Ie-j0E">
