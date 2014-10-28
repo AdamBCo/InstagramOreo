@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		343D7B2919FF38D6009B7BCF /* NSString+Trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 343D7B2819FF38D6009B7BCF /* NSString+Trim.m */; };
 		6619896A19FEC73B00F6C11A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619896919FEC73B00F6C11A /* main.m */; };
 		6619896D19FEC73B00F6C11A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619896C19FEC73B00F6C11A /* AppDelegate.m */; };
 		6619897019FEC73B00F6C11A /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619896F19FEC73B00F6C11A /* SignUpViewController.m */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		343D7B2719FF38D6009B7BCF /* NSString+Trim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Trim.h"; sourceTree = "<group>"; };
+		343D7B2819FF38D6009B7BCF /* NSString+Trim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Trim.m"; sourceTree = "<group>"; };
 		6619896419FEC73B00F6C11A /* InstagramOreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramOreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6619896819FEC73B00F6C11A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6619896919FEC73B00F6C11A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -146,6 +149,15 @@
 			name = "Login & Signup";
 			sourceTree = "<group>";
 		};
+		343D7B2A19FF3946009B7BCF /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				343D7B2719FF38D6009B7BCF /* NSString+Trim.h */,
+				343D7B2819FF38D6009B7BCF /* NSString+Trim.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		6619895B19FEC73B00F6C11A = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +192,7 @@
 				661989C219FEE71B00F6C11A /* News Feed Table View */,
 				661989AB19FEDE3100F6C11A /* ExploreCollectionViewController.h */,
 				661989AC19FEDE3100F6C11A /* ExploreCollectionViewController.m */,
+				343D7B2A19FF3946009B7BCF /* Categories */,
 				661989C319FEE8DA00F6C11A /* Post.h */,
 				661989C419FEE8DA00F6C11A /* Post.m */,
 				6619897419FEC73B00F6C11A /* Images.xcassets */,
@@ -380,6 +393,7 @@
 				661989B319FEE26E00F6C11A /* NotificationsTableViewController.m in Sources */,
 				661989C019FEE6FD00F6C11A /* PhotoProfileCollectionTableViewCell.m in Sources */,
 				6619896A19FEC73B00F6C11A /* main.m in Sources */,
+				343D7B2919FF38D6009B7BCF /* NSString+Trim.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
