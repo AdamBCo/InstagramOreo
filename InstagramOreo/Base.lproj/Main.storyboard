@@ -392,7 +392,13 @@
                             <outlet property="delegate" destination="vDg-FN-eZb" id="RNy-rp-VKi"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ff1-El-ZkX"/>
+                    <navigationItem key="navigationItem" id="ff1-El-ZkX">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="OCg-wr-eq4">
+                            <connections>
+                                <action selector="onLogoutButtonPressed:" destination="vDg-FN-eZb" id="B68-uf-KvI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="OzC-DJ-vIS" kind="show" identifier="ShowLoginSegue" id="yRE-Hi-ts4"/>
                     </connections>

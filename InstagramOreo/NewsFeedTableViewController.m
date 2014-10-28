@@ -21,7 +21,6 @@
     [super viewDidLoad];
 }
 
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -45,6 +44,10 @@
     }
 }
 
+- (IBAction)onLogoutButtonPressed:(id)sender
+{
+    [PFUser logOut];
+}
 
 #pragma mark - Table view data source
 
