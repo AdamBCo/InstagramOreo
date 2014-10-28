@@ -515,6 +515,9 @@
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Explore" image="gift" id="R0g-WO-lzi"/>
+                    <connections>
+                        <outlet property="collectionView" destination="xTD-DG-tgy" id="uZD-EZ-Kc6"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBA-7a-4la" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

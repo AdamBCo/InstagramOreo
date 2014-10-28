@@ -7,8 +7,13 @@
 //
 
 #import "ExploreCollectionViewController.h"
+#import "PhotoCollectionViewCell.h"
+#import <Parse/Parse.h>
 
 @interface ExploreCollectionViewController ()
+
+@property NSArray *photos;
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -16,21 +21,44 @@
 
 static NSString * const reuseIdentifier = @"Cell";
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    // Do any additional setup after loading the view.
+    [self loadPhotosToExplore];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)loadPhotosToExplore
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto"];
+    //PFUser *user = [PFUser currentUser];
+    //[query whereKey:@"user" equalTo:user];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+    {
+        NSMutableArray *newObjectIDArray = [NSMutableArray array];
+        NSMutableArray *photoArray = [NSMutableArray array];
+
+        if (objects.count > 0)
+        {
+            for (PFObject *eachObject in objects)
+            {
+                [newObjectIDArray addObject:[eachObject objectId]];
+               // NSLog(@"PFObject HAHA: %@",eachObject);
+                PFFile *file = [eachObject objectForKey:@"imageFile"];
+                //NSLog(@"Notifications: %@",file);
+                NSLog(@"Data: %@", [file getData]);
+                NSData *data = [file getData];
+                [photoArray addObject:data];
+            }
+
+            self.photos = [NSArray arrayWithArray:photoArray];
+            [self.collectionView reloadData];
+        }
+    }];
 }
 
 /*
@@ -46,19 +74,18 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 0;
+    return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 0;
+    return self.photos.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell
-    
+    PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.photoImage.image = [UIImage imageWithData:[self.photos objectAtIndex:indexPath.row]];
+
     return cell;
 }
 
@@ -92,5 +119,11 @@ static NSString * const reuseIdentifier = @"Cell";
 	
 }
 */
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
 
 @end
