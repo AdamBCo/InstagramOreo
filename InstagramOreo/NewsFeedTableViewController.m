@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //Refresh Control
     self.refreshControl = [UIRefreshControl new];
     [self.refreshControl addTarget:self action:@selector(downloadAllImages) forControlEvents:UIControlEventValueChanged];
     [self setRefreshControl:self.refreshControl];
@@ -68,8 +67,10 @@
     
     Post *photoPost = [self.arrayOfPhotoObjects objectAtIndex:indexPath.row];
     NewsFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsFeedCell"];
-    cell.capturedPhoto.file = photoPost.standardImage;
-    [cell.capturedPhoto loadInBackground];
+    cell.userNameLabel.text = photoPost.userName;
+    [photoPost standardImageWithCompletionBlock:^(UIImage *photo) {
+        cell.capturedPhoto.image = photo;
+    }];
     cell.photoCaptionTextView.text = photoPost.caption;
     cell.timeLabel.text = photoPost.timeCreatedString;
     return cell;
@@ -77,7 +78,6 @@
 
 - (void)downloadAllImages{
     PFUser *user = [PFUser currentUser];
-    
     PFQuery *postQuery = [PFQuery queryWithClassName:[Post parseClassName]];
     postQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
     [postQuery orderByDescending:@"createdAt"];

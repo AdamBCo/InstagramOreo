@@ -18,6 +18,7 @@
 @dynamic numberOfLikes;
 @dynamic user;
 @dynamic commentsArray;
+@dynamic userName;
 
 
 + (NSString *)parseClassName{
@@ -32,12 +33,23 @@
     return [self objectForKey:@"caption"];
 }
 
--(PFFile *)standardImage{
-    return [self objectForKey:@"imageFile"];
+-(void)standardImageWithCompletionBlock:(void(^)(UIImage *))completionBlock {
+    
+    PFFile *file = [self objectForKey:@"imageFile"];
+    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        completionBlock([UIImage imageWithData:data]);
+    }];
 }
+
 
 -(PFUser *)user{
     return [self objectForKey:@"user"];
+}
+
+-(NSString *)userName{
+//    PFUser *user = [self objectForKey:@"user"];
+//    NSLog(@"%@",user.username);
+    return @"Hello";
 }
 
 -(NSString *)timeCreatedString{
