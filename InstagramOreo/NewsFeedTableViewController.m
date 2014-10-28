@@ -12,6 +12,7 @@
 
 @interface NewsFeedTableViewController ()
 @property NSArray *photoPosts;
+@property NSArray *photoTexts;
 
 @end
 
@@ -60,12 +61,15 @@
     
     NewsFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsFeedCell"];
     cell.capturedPhoto.image = [UIImage imageWithData:[self.photoPosts objectAtIndex:indexPath.row]];
+    cell.photoCaptionTextView.text = [self.photoTexts objectAtIndex:indexPath.row];
     return cell;
 }
 
 - (void)downloadAllImages
 {
     PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto"];
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    [query orderByDescending:@"createdAt"];
     PFUser *user = [PFUser currentUser];
     [query whereKey:@"user" equalTo:user];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -75,12 +79,16 @@
         if (objects.count > 0) {
             for (PFObject *eachObject in objects) {
                 [newObjectIDArray addObject:[eachObject objectId]];
-                NSLog(@"PFObject HAHA: %@",eachObject);
                 PFFile *file = [eachObject objectForKey:@"imageFile"];
-                NSLog(@"Notifications: %@",file);
-                NSLog(@"Data: %@", [file getData]);
                 NSData *data = [file getData];
                 [photoArray addObject:data];
+                
+                
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    NSData *data = [file getData]; //Async Coolio Stuff
+//                    [photoArray addObject:data];
+//                });
+                
             }
 
             self.photoPosts = [NSArray arrayWithArray:photoArray];

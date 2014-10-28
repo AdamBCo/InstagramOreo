@@ -73,14 +73,17 @@
     NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.05f);
     
     PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
+    
+    NSString *caption = self.textView.text;
 
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             
             PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
             [userPhoto setObject:imageFile forKey:@"imageFile"];
+            [userPhoto setObject:caption forKey:@"caption"];
             
-            userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+//            userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
             
             PFUser *user = [PFUser currentUser];
             [userPhoto setObject:user forKey:@"user"];
@@ -89,7 +92,6 @@
                 if (!error) {
                     
                     NSLog(@"IT WAS Posted!!");
-                    //THis might work!!
                     [self.navigationController popToRootViewControllerAnimated:YES];
                     self.takePhoto = YES;
                 }
