@@ -29,18 +29,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIE-vo-9Q7">
-                                <rect key="frame" x="16" y="429" width="568" height="59"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="mOM-iO-sJJ"/>
-                                </constraints>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="login:" destination="OzC-DJ-vIS" eventType="touchUpInside" id="IXn-O4-Cmn"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oreo" translatesAutoresizingMaskIntoConstraints="NO" id="Vdc-Nb-Nmy">
                                 <rect key="frame" x="180" y="78" width="240" height="205"/>
                                 <constraints>
@@ -55,6 +43,18 @@
                                 </state>
                                 <connections>
                                     <segue destination="HUB-ow-gs7" kind="show" id="tMP-AY-lFB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIE-vo-9Q7">
+                                <rect key="frame" x="16" y="429" width="568" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="mOM-iO-sJJ"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="login:" destination="OzC-DJ-vIS" eventType="touchUpInside" id="IXn-O4-Cmn"/>
                                 </connections>
                             </button>
                         </subviews>

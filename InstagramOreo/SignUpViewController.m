@@ -11,12 +11,20 @@
 
 @interface SignUpViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextfield;
+
 @end
 
 @implementation SignUpViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [self.nameTextField addTarget:self.passwordTextfield action:@selector(becomeFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.passwordTextfield addTarget:self.emailTextField action:@selector(becomeFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.emailTextField addTarget:self action:@selector(createAccountButtonPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
 }
 
 - (IBAction)createAccountButtonPressed:(id)sender {

@@ -29,6 +29,7 @@
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
         NSLog(@"The current user is: %@", currentUser.username);
+        [self.tabBarController.tabBar setHidden:NO];
     }
     else {
         [self performSegueWithIdentifier:@"ShowLoginSegue" sender:self];

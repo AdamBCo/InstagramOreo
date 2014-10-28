@@ -21,6 +21,9 @@
     [super viewDidLoad];
     self.navigationItem.hidesBackButton = YES;
     [self.tabBarController.tabBar setHidden:YES];
+
+    [self.usernameField addTarget:self.passwordField action:@selector(becomeFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.passwordField addTarget:self action:@selector(login:) forControlEvents:UIControlEventEditingDidEndOnExit];
 }
 
 - (IBAction)login:(id)sender {
