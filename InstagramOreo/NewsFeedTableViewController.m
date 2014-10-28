@@ -61,7 +61,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NewsFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsFeedCell"];
-    cell.capturedPhoto.image = [self.photoPosts objectForKey:@"imageFile"];
+   // cell.capturedPhoto.image = [self.photoPosts objectForKey:@"imageFile"];
     cell.photoCaptionTextView.text = [self.photoTexts objectAtIndex:indexPath.row];
     return cell;
 }
