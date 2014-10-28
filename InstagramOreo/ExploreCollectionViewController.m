@@ -39,35 +39,21 @@ static NSString * const reuseIdentifier = @"CollectionCell";
     {
         NSMutableArray *newObjectIDArray = [NSMutableArray array];
         NSMutableArray *photoArray = [NSMutableArray array];
-
-        if (objects.count > 0)
-        {
-            for (PFObject *eachObject in objects)
-            {
+        
+        if (objects.count > 0) {
+            for (PFObject *eachObject in objects) {
                 [newObjectIDArray addObject:[eachObject objectId]];
-               // NSLog(@"PFObject HAHA: %@",eachObject);
                 PFFile *file = [eachObject objectForKey:@"imageFile"];
-                //NSLog(@"Notifications: %@",file);
-                NSLog(@"Data: %@", [file getData]);
-                NSData *data = [file getData];
-                [photoArray addObject:data];
+                [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    [photoArray addObject:data];
+                    self.photos = [NSArray arrayWithArray:photoArray];
+                    [self.collectionView reloadData];
+                }];
             }
-
-            self.photos = [NSArray arrayWithArray:photoArray];
-            [self.collectionView reloadData];
         }
     }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark <UICollectionViewDataSource>
 
@@ -81,11 +67,10 @@ static NSString * const reuseIdentifier = @"CollectionCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    PhotoCollectionViewCell *cell = (PhotoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    UIImage *imaged = [UIImage imageWithData:self.photos.firstObject];
-    //NSLog(@"imag %@",imaged.description);
-   // cell.photoImage.image = [UIImage imageWithData:[self.photos objectAtIndex:indexPath.row]];;
-    //cell.photoImage.image = [UIImage imageNamed:@"camera"];
+    PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    UIImage *collectionImage = [UIImage imageWithData:self.photos.firstObject];
+    NSLog(@"imag %@",collectionImage.description);
+    cell.photoImage.image = [UIImage imageWithData:[self.photos objectAtIndex:indexPath.row]];
     return cell;
 }
 

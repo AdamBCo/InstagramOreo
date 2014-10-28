@@ -75,24 +75,17 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSMutableArray *newObjectIDArray = [NSMutableArray array];
         NSMutableArray *photoArray = [NSMutableArray array];
-        
         if (objects.count > 0) {
             for (PFObject *eachObject in objects) {
                 [newObjectIDArray addObject:[eachObject objectId]];
                 PFFile *file = [eachObject objectForKey:@"imageFile"];
-                NSData *data = [file getData];
-                [photoArray addObject:data];
-                
-                
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    NSData *data = [file getData]; //Async Coolio Stuff
-//                    [photoArray addObject:data];
-//                });
-                
+                [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    [photoArray addObject:data];
+                    NSLog(@"Data: %@",data);
+                }];
+                self.photoPosts = [NSArray arrayWithArray:photoArray];
+                [self.tableView reloadData];
             }
-
-            self.photoPosts = [NSArray arrayWithArray:photoArray];
-            [self.tableView reloadData];
         }
     }];
 }
