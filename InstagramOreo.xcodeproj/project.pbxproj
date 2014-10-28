@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		343D7B2519FF2985009B7BCF /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 343D7B2419FF2985009B7BCF /* TPKeyboardAvoidingScrollView.m */; };
 		6619896A19FEC73B00F6C11A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619896919FEC73B00F6C11A /* main.m */; };
 		6619896D19FEC73B00F6C11A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619896C19FEC73B00F6C11A /* AppDelegate.m */; };
 		6619897019FEC73B00F6C11A /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619896F19FEC73B00F6C11A /* SignUpViewController.m */; };
@@ -53,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		343D7B2319FF2985009B7BCF /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		343D7B2419FF2985009B7BCF /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		6619896419FEC73B00F6C11A /* InstagramOreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramOreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6619896819FEC73B00F6C11A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6619896919FEC73B00F6C11A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -138,6 +141,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		343D7B2619FF2990009B7BCF /* Login & Signup */ = {
+			isa = PBXGroup;
+			children = (
+				6619896E19FEC73B00F6C11A /* SignUpViewController.h */,
+				6619896F19FEC73B00F6C11A /* SignUpViewController.m */,
+				661989CC19FF068200F6C11A /* LoginViewController.h */,
+				661989CD19FF068200F6C11A /* LoginViewController.m */,
+			);
+			name = "Login & Signup";
+			sourceTree = "<group>";
+		};
 		6619895B19FEC73B00F6C11A = {
 			isa = PBXGroup;
 			children = (
@@ -161,10 +175,7 @@
 			children = (
 				6619896B19FEC73B00F6C11A /* AppDelegate.h */,
 				6619896C19FEC73B00F6C11A /* AppDelegate.m */,
-				6619896E19FEC73B00F6C11A /* SignUpViewController.h */,
-				6619896F19FEC73B00F6C11A /* SignUpViewController.m */,
-				661989CC19FF068200F6C11A /* LoginViewController.h */,
-				661989CD19FF068200F6C11A /* LoginViewController.m */,
+				343D7B2619FF2990009B7BCF /* Login & Signup */,
 				6619897119FEC73B00F6C11A /* Main.storyboard */,
 				661989CF19FF1F6700F6C11A /* PostViewController.h */,
 				661989D019FF1F6700F6C11A /* PostViewController.m */,
@@ -189,6 +200,8 @@
 		6619896719FEC73B00F6C11A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				343D7B2319FF2985009B7BCF /* TPKeyboardAvoidingScrollView.h */,
+				343D7B2419FF2985009B7BCF /* TPKeyboardAvoidingScrollView.m */,
 				661989A319FEC8DB00F6C11A /* SystemConfiguration.framework */,
 				661989A119FEC8D000F6C11A /* StoreKit.framework */,
 				6619899F19FEC8C600F6C11A /* Security.framework */,
@@ -376,6 +389,7 @@
 				661989BD19FEE6E700F6C11A /* ProfilePhotoListTableViewCell.m in Sources */,
 				661989B319FEE26E00F6C11A /* NotificationsTableViewController.m in Sources */,
 				661989C019FEE6FD00F6C11A /* PhotoProfileCollectionTableViewCell.m in Sources */,
+				343D7B2519FF2985009B7BCF /* TPKeyboardAvoidingScrollView.m in Sources */,
 				6619896A19FEC73B00F6C11A /* main.m in Sources */,
 				661989D119FF1F6700F6C11A /* PostViewController.m in Sources */,
 			);
