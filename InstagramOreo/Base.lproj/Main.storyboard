@@ -336,6 +336,9 @@
                                             <state key="normal" title="365 likes">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="likeButtonPressed:" destination="jti-Xd-dVm" eventType="touchUpInside" id="MMH-QF-Hpr"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCz-22-e43">
                                             <rect key="frame" x="8" y="464" width="30" height="30"/>
@@ -387,6 +390,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="capturedPhoto" destination="UBo-tC-Uyv" id="GKX-zU-b8f"/>
+                                    <outlet property="likeButton" destination="k4u-1z-zOI" id="GDS-lY-92U"/>
                                     <outlet property="photoCaptionTextView" destination="qXL-RX-ecj" id="9Kr-SJ-v6g"/>
                                     <outlet property="profileImageButton" destination="Jz8-ib-Fxi" id="Ovn-1x-c9f"/>
                                     <outlet property="timeLabel" destination="fee-1W-vFs" id="gsX-eE-xTr"/>

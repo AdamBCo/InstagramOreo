@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property BOOL takePhoto;
+@property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundTaskId;
 
 @end
 
@@ -63,17 +64,17 @@
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.imageView.image = chosenImage;
-    
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-    
 }
+
+- (IBAction)cancelButtonPressed:(id)sender {
+    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 -(void)uploadImage{
 
     NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.05f);
-    
     PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
-    
     NSString *caption = self.textView.text;
 
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -82,18 +83,27 @@
             PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
             [userPhoto setObject:imageFile forKey:@"imageFile"];
             [userPhoto setObject:caption forKey:@"caption"];
+            [userPhoto setObject:0 forKey:@"numberOfLikes"];
             
-//            userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+            PFACL *photoACL = [PFACL ACLWithUser:[PFUser currentUser]];
+            [photoACL setPublicReadAccess:YES];
+            userPhoto.ACL = photoACL;
             
             PFUser *user = [PFUser currentUser];
             [userPhoto setObject:user forKey:@"user"];
             
+            //We setup a background task to allow for the image to upload, when the phone turns off.
+            self.backgroundTaskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+                [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskId];
+            }];
+            
             [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (!error) {
                     
-                    NSLog(@"IT WAS Posted!!");
                     [self.navigationController popToRootViewControllerAnimated:YES];
                     self.takePhoto = YES;
+                    [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskId];
+                    NSLog(@"Image was posted Successfully");
                 }
                 else{
                     NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -113,7 +123,9 @@
 }
 - (IBAction)postImage:(id)sender {
     [self uploadImage];
+    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 
 @end

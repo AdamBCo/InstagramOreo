@@ -202,10 +202,9 @@
 			children = (
 				6619896B19FEC73B00F6C11A /* AppDelegate.h */,
 				6619896C19FEC73B00F6C11A /* AppDelegate.m */,
-				343D7B2619FF2990009B7BCF /* Login & Signup */,
 				6619897119FEC73B00F6C11A /* Main.storyboard */,
-				661989C919FF037700F6C11A /* CameraViewController.h */,
-				661989CA19FF037700F6C11A /* CameraViewController.m */,
+				343D7B2619FF2990009B7BCF /* Login & Signup */,
+				661989DB1A002BD700F6C11A /* Camera */,
 				661989C119FEE70700F6C11A /* Profile View Controller */,
 				661989B719FEE67800F6C11A /* Notification Table View */,
 				661989C219FEE71B00F6C11A /* News Feed Table View */,
@@ -293,6 +292,15 @@
 				661989A919FEDE0400F6C11A /* NewsFeedTableViewCell.m */,
 			);
 			name = "News Feed Table View";
+			sourceTree = "<group>";
+		};
+		661989DB1A002BD700F6C11A /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				661989C919FF037700F6C11A /* CameraViewController.h */,
+				661989CA19FF037700F6C11A /* CameraViewController.m */,
+			);
+			name = Camera;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
