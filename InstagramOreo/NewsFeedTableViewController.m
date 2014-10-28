@@ -67,8 +67,8 @@
     
     PFObject *photoObject = [self.arrayOfPhotoObjects objectAtIndex:indexPath.row];
     NewsFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsFeedCell"];
-    //cell.capturedPhoto.file = [photoObject objectForKey:@"imageFile"];
-    //cell.photoCaptionTextView.text = [photoObject objectForKey:@"caption"];
+    cell.capturedPhoto.file = [photoObject objectForKey:@"imageFile"];
+    cell.photoCaptionTextView.text = [photoObject objectForKey:@"caption"];
     
     
     //TimeCreated
@@ -78,7 +78,7 @@
     NSString *creationDate = [dateFormat stringFromDate:date];
     cell.timeLabel.text = creationDate;
     
-    //[cell.capturedPhoto loadInBackground];
+    [cell.capturedPhoto loadInBackground];
     return cell;
 }
 
