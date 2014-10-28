@@ -19,7 +19,7 @@
 
 @implementation ExploreCollectionViewController
 
-static NSString * const reuseIdentifier = @"Cell";
+static NSString * const reuseIdentifier = @"CollectionCell";
 
 - (void)viewDidLoad
 {
@@ -35,8 +35,6 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)loadPhotosToExplore
 {
     PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto"];
-    //PFUser *user = [PFUser currentUser];
-    //[query whereKey:@"user" equalTo:user];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
     {
         NSMutableArray *newObjectIDArray = [NSMutableArray array];
@@ -82,10 +80,12 @@ static NSString * const reuseIdentifier = @"Cell";
     return self.photos.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    cell.photoImage.image = [UIImage imageWithData:[self.photos objectAtIndex:indexPath.row]];
-
+- (PhotoCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    PhotoCollectionViewCell *cell = (PhotoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    UIImage *imaged = [UIImage imageWithData:self.photos.firstObject];
+    //NSLog(@"imag %@",imaged.description);
+   // cell.photoImage.image = [UIImage imageWithData:[self.photos objectAtIndex:indexPath.row]];;
+    //cell.photoImage.image = [UIImage imageNamed:@"camera"];
     return cell;
 }
 
