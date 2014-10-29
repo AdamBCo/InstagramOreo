@@ -440,7 +440,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="421" id="752-Hf-mP4" customClass="ExplorePhotosTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="421" id="752-Hf-mP4" customClass="ExplorePhotosTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="752-Hf-mP4" id="Bq3-fT-fO8">
@@ -553,7 +553,9 @@
                             <constraint firstItem="uAj-IA-3oT" firstAttribute="top" secondItem="seR-Id-M6e" secondAttribute="top" id="YyI-5A-Np7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Xfe-jM-Oek"/>
+                    <navigationItem key="navigationItem" id="Xfe-jM-Oek">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="HTi-WT-cPi"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableview" destination="uAj-IA-3oT" id="ucT-1X-LeN"/>
                     </connections>
