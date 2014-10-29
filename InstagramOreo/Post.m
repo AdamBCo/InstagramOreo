@@ -21,15 +21,15 @@
 @dynamic userName;
 
 
-+ (NSString *)parseClassName{
++ (NSString *)parseClassName {
     return @"UserPhoto";
 }
 
-+ (void)load{
++ (void)load {
     [self registerSubclass];
 }
 
--(NSString *)caption{
+-(NSString *)caption {
     return [self objectForKey:@"caption"];
 }
 
@@ -42,7 +42,7 @@
 }
 
 
--(PFUser *)user{
+-(PFUser *)user {
     return [self objectForKey:@"user"];
 }
 
@@ -60,7 +60,7 @@
     }];
 }
 
--(NSString *)timeCreatedString{
+-(NSString *)timeCreatedString {
     NSDate *date = self.createdAt;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
