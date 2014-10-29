@@ -16,14 +16,18 @@
 
 @implementation ExplorePhotoDetailViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.navigationItem.title = @"PHOTO";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                            target:self
+                                                                                             action:@selector(onBackButtonPressed:)];
 }
 
--(void)viewDidAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated
+{
     [self.tableview reloadData];
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -34,7 +38,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ExplorePhotosTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.capturedPhoto.image = [UIImage imageWithData:self.selectedObject];
+
+    //UserName
+    [self.selectedPost usernameWithCompletionBlock:^(NSString *username) {
+        //cell..text = username;
+        NSLog(@"%@",username);
+    }];
+
+    //Image
+    [self.selectedPost standardImageWithCompletionBlock:^(UIImage *photo) {
+        cell.capturedPhoto.image = photo;
+    }];
+
+    //PhotoCaption
+    cell.photoCaptionTextView.text = self.selectedPost.caption;
+
+    //TimeLabel
+    cell.timeLabel.text = self.selectedPost.timeCreatedString;
+    
     return cell;
 }
 
@@ -43,9 +64,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

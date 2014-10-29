@@ -10,10 +10,11 @@
 #import "PhotoCollectionViewCell.h"
 #import "ExplorePhotoDetailViewController.h"
 #import <Parse/Parse.h>
+#import "Post.h"
 
 @interface ExploreCollectionViewController () <UICollectionViewDelegateFlowLayout>
 
-@property NSArray *photos;
+@property NSArray *posts;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
@@ -28,62 +29,60 @@ static NSString * const reuseIdentifier = @"CollectionCell";
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
     
+    self.navigationItem.title = @"EXPLORE";
+
     // Register cell classes
     [self loadPhotosToExplore];
 }
 
 - (void)loadPhotosToExplore
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto"];
+    PFQuery *query = [PFQuery queryWithClassName:[Post parseClassName]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
     {
-        NSMutableArray *newObjectIDArray = [NSMutableArray array];
-        NSMutableArray *photoArray = [NSMutableArray array];
-        
-        if (objects.count > 0) {
-            for (PFObject *eachObject in objects) {
-                [newObjectIDArray addObject:[eachObject objectId]];
-                PFFile *file = [eachObject objectForKey:@"imageFile"];
-                [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                    [photoArray addObject:data];
-                    self.photos = [NSArray arrayWithArray:photoArray];
-                    [self.collectionView reloadData];
-                }];
-            }
+        if (error) {
+            NSLog(@"Error: %@",error.localizedDescription);
+        }
+        else {
+            self.posts = objects;
+            [self.collectionView reloadData];
         }
     }];
 }
 
-
 #pragma mark <UICollectionViewDataSource>
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
     return 1;
 }
 
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.photos.count;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.posts.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    cell.photoImage.image = [UIImage imageWithData:[self.photos objectAtIndex:indexPath.row]];
+    Post *post = [self.posts objectAtIndex:indexPath.row];
+    //Image
+    [post standardImageWithCompletionBlock:^(UIImage *photo) {
+        cell.photoImage.image = photo;
+    }];
+
     return cell;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
     
     if ([segue.identifier isEqualToString:@"ExplorePhotoDetailSegue"])
     {
-        
         UINavigationController *navController = segue.destinationViewController;
         ExplorePhotoDetailViewController *detailViewController = navController.viewControllers.firstObject;
-//        detailViewController.selectedObject = self.selectedPhotoData;
+        detailViewController.selectedPost = [self.posts objectAtIndex:indexPath.row];
     }
 }
 
@@ -98,7 +97,7 @@ static NSString * const reuseIdentifier = @"CollectionCell";
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    UIEdgeInsets edgeInsets = UIEdgeInsetsMake(5.0, 0.0, 5.0, 5.0);
+    UIEdgeInsets edgeInsets = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
     return edgeInsets;
 }
 
