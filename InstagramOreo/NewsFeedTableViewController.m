@@ -7,8 +7,13 @@
 //
 
 #import "NewsFeedTableViewController.h"
+#import "NewsFeedTableViewCell.h"
+#import <Parse/Parse.h>
+#import "Post.h"
 
 @interface NewsFeedTableViewController ()
+@property NSArray *arrayOfPhotoObjects;
+@property UIRefreshControl *refreshControl;
 
 @end
 
@@ -17,84 +22,92 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self action:@selector(downloadAllImages) forControlEvents:UIControlEventValueChanged];
+    [self setRefreshControl:self.refreshControl];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        NSLog(@"The current user is: %@", currentUser.username);
+        [self.tabBarController.tabBar setHidden:NO];
+        [self downloadAllImages];
+    }
+    else {
+        [self performSegueWithIdentifier:@"ShowLoginSegue" sender:self];
+    }
+}
+
+
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowLogin"]) {
+        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+    }
+}
+
+- (IBAction)onLogoutButtonPressed:(id)sender
+{
+    [PFUser logOut];
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.arrayOfPhotoObjects.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    // Configure the cell...
+    Post *photoPost = [self.arrayOfPhotoObjects objectAtIndex:indexPath.row];
+    NewsFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsFeedCell"];
     
+    //UserName
+    [photoPost usernameWithCompletionBlock:^(NSString *username) {
+        cell.userNameLabel.text = username;
+    }];
+    
+    //Image
+    [photoPost standardImageWithCompletionBlock:^(UIImage *photo) {
+        cell.capturedPhoto.image = photo;
+    }];
+    
+    //PhotoCaption
+    cell.photoCaptionTextView.text = photoPost.caption;
+    
+    //TimeLabel
+    cell.timeLabel.text = photoPost.timeCreatedString;
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+
+- (void)downloadAllImages{
+    PFUser *user = [PFUser currentUser];
+    PFQuery *postQuery = [PFQuery queryWithClassName:[Post parseClassName]];
+    postQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery whereKey:@"user" equalTo:user];
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@",error);
+            [self.refreshControl endRefreshing];
+        }else{
+            self.arrayOfPhotoObjects = objects;
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+        }
+    }];
+    
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
+                
+                
 @end

@@ -1,5 +1,5 @@
 //
-//  LoginViewController.h
+//  PhotoCollectionViewCell.h
 //  InstagramOreo
 //
 //  Created by Adam Cooper on 10/27/14.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@interface PhotoCollectionViewCell : UICollectionViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *photoImage;
 
 @end

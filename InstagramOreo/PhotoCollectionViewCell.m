@@ -1,13 +1,13 @@
 //
-//  LoginViewController.h
+//  PhotoCollectionViewCell.m
 //  InstagramOreo
 //
 //  Created by Adam Cooper on 10/27/14.
 //  Copyright (c) 2014 MobileMakers. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PhotoCollectionViewCell.h"
 
-@interface LoginViewController : UIViewController
+@implementation PhotoCollectionViewCell
 
 @end

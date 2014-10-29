@@ -7,61 +7,98 @@
 //
 
 #import "ExploreCollectionViewController.h"
+#import "PhotoCollectionViewCell.h"
+#import "ExplorePhotoDetailViewController.h"
+#import <Parse/Parse.h>
+#import "Post.h"
 
-@interface ExploreCollectionViewController ()
+@interface ExploreCollectionViewController () <UICollectionViewDelegateFlowLayout>
+
+@property NSArray *posts;
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
 @implementation ExploreCollectionViewController
 
-static NSString * const reuseIdentifier = @"Cell";
+static NSString * const reuseIdentifier = @"CollectionCell";
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
     
+    self.navigationItem.title = @"EXPLORE";
+
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    // Do any additional setup after loading the view.
+    [self loadPhotosToExplore];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)loadPhotosToExplore
+{
+    PFQuery *query = [PFQuery queryWithClassName:[Post parseClassName]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+    {
+        if (error) {
+            NSLog(@"Error: %@",error.localizedDescription);
+        }
+        else {
+            self.posts = objects;
+            [self.collectionView reloadData];
+        }
+    }];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark <UICollectionViewDataSource>
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete method implementation -- Return the number of sections
-    return 0;
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
 }
 
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete method implementation -- Return the number of items in the section
-    return 0;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.posts.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell
-    
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    Post *post = [self.posts objectAtIndex:indexPath.row];
+    //Image
+    [post standardImageWithCompletionBlock:^(UIImage *photo) {
+        cell.photoImage.image = photo;
+    }];
+
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+    
+    if ([segue.identifier isEqualToString:@"ExplorePhotoDetailSegue"])
+    {
+        UINavigationController *navController = segue.destinationViewController;
+        ExplorePhotoDetailViewController *detailViewController = navController.viewControllers.firstObject;
+        detailViewController.selectedPost = [self.posts objectAtIndex:indexPath.row];
+    }
+}
+
+#pragma mark - Collection View Flow Delegate Methods
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Make three cells show up side by side
+    CGSize size = CGSizeMake(collectionView.bounds.size.width * 0.333 - 10, collectionView.bounds.size.width * 0.333);
+    return size;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    UIEdgeInsets edgeInsets = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
+    return edgeInsets;
 }
 
 #pragma mark <UICollectionViewDelegate>
@@ -94,5 +131,11 @@ static NSString * const reuseIdentifier = @"Cell";
 	
 }
 */
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
 
 @end
