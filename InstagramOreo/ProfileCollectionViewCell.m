@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 MobileMakers. All rights reserved.
 //
 
-#import "ProfileTableViewCollectionViewCell.h"
+#import "ProfileCollectionViewCell.h"
 
-@implementation ProfileTableViewCollectionViewCell
+@implementation ProfileCollectionViewCell
 
 
 @end

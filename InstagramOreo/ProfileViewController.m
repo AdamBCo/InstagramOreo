@@ -7,16 +7,21 @@
 //
 
 #import "ProfileViewController.h"
+#import "ProfileCollectionViewController.h"
+
 #import "UserProfileTableViewCell.h"
-#import "ProfileTableViewCollectionViewCell.h"
+#import "ProfileCollectionViewCell.h"
 
 
 @interface ProfileViewController () <UICollectionViewDataSource, UITableViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UICollectionViewDelegateFlowLayout>
-@property (weak, nonatomic) IBOutlet UITableView *photosTableView;
 @property NSArray *userPhotos;
 @property NSArray *tableViewCellsNeeded;
 @property NSArray *celltasticArray;
 @property NSInteger counterPlus;
+
+
+@property (strong, nonatomic) ProfileCollectionViewController *photoCollectionViewController;
+
 
 @end
 
@@ -49,7 +54,6 @@
                      NSMutableArray *bad = [NSMutableArray array];
                      self.celltasticArray = [self getArrayForThrees:cool arrayOfThrees:bad];
 //                     NSLog(@"Cells: %lu",(unsigned long)self.celltasticArray.count);
-                     [self.photosTableView reloadData];
                  }];
              }
          }
@@ -102,7 +106,7 @@
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    ProfileTableViewCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
+    ProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
     if (self.counterPlus < self.userPhotos.count) {
         cell.imageView.image = [UIImage imageWithData:[self.userPhotos objectAtIndex:self.counterPlus]];
     }

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UserProfileTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UICollectionView *photoCollectionView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *standardImage;
 @property NSArray *storedImages;
 @end

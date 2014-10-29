@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProfileTableViewCollectionViewCell : UICollectionViewCell
+@interface ProfileCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *labelOne;
 
 @end
