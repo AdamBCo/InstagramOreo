@@ -62,7 +62,6 @@
         [arrayOfThrees addObject:fullArray];
         return arrayOfThrees;
     }
-    
     NSMutableArray *threes = [NSMutableArray array];
     
     for (int i = 0; i < 3; i++)

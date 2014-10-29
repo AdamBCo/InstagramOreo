@@ -305,6 +305,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="tdO-2z-PCL">
+                            <rect key="frame" x="0.0" y="77" width="600" height="275"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        </containerView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="55" id="smQ-8h-CiF" customClass="NotificationTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
