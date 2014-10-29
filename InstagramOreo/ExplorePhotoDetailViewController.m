@@ -26,6 +26,8 @@
 {
     [self.tableview reloadData];
 }
+- (IBAction)onFollowButtonPressed:(id)sender {
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
