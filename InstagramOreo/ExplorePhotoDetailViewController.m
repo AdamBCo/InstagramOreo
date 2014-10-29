@@ -20,9 +20,9 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"PHOTO";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                            target:self
-                                                                                             action:@selector(onBackButtonPressed:)];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+//                                                                                            target:self
+//                                                                                             action:@selector(onBackButtonPressed:)];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -41,8 +41,7 @@
 
     //UserName
     [self.selectedPost usernameWithCompletionBlock:^(NSString *username) {
-        //cell..text = username;
-        NSLog(@"%@",username);
+        cell.usernameLabel.text = username;
     }];
 
     //Image
