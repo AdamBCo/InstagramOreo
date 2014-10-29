@@ -11,9 +11,8 @@
 
 @interface ExplorePhotosTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet PFImageView *capturedPhoto;
+@property (weak, nonatomic) IBOutlet UIImageView *capturedPhoto;
 
-@property (weak, nonatomic) IBOutlet UIImageView *selectedImage;
 @property (weak, nonatomic) IBOutlet UIButton *profileImageButton;
 @property (weak, nonatomic) IBOutlet UITextView *photoCaptionTextView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;

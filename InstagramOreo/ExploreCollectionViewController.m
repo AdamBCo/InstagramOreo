@@ -75,13 +75,15 @@ static NSString * const reuseIdentifier = @"CollectionCell";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+    
     if ([segue.identifier isEqualToString:@"ExplorePhotoDetailSegue"])
     {
-        //UINavigationController *nc = segue.destinationViewController;
-        ExplorePhotoDetailViewController *detailViewController = segue.destinationViewController;
-        NSData *selectedPhotoData = [self.photos objectAtIndex:indexPath.item];
-        detailViewController.selectedObject = selectedPhotoData;
+        
+        UINavigationController *navController = segue.destinationViewController;
+        ExplorePhotoDetailViewController *detailViewController = navController.viewControllers.firstObject;
+//        detailViewController.selectedObject = self.selectedPhotoData;
     }
 }
 

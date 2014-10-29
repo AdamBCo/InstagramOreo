@@ -10,8 +10,7 @@
 #import "ExplorePhotosTableViewCell.h"
 
 @interface ExplorePhotoDetailViewController () <UITableViewDelegate, UITableViewDataSource>
-
-@property NSArray *photos;
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 @end
 
@@ -22,6 +21,11 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [self.tableview reloadData];
+    
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 1;
@@ -30,8 +34,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ExplorePhotosTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.selectedImage.image = [UIImage imageWithData:self.selectedObject];
-    [cell.selectedImage sizeToFit];
+    cell.capturedPhoto.image = [UIImage imageWithData:self.selectedObject];
     return cell;
 }
 
@@ -44,15 +47,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
