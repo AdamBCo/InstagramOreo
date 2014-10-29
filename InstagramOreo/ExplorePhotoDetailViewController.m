@@ -20,9 +20,6 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"PHOTO";
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-//                                                                                            target:self
-//                                                                                             action:@selector(onBackButtonPressed:)];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -56,11 +53,6 @@
     cell.timeLabel.text = self.selectedPost.timeCreatedString;
     
     return cell;
-}
-
-- (IBAction)onBackButtonPressed:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
