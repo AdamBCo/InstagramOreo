@@ -11,5 +11,4 @@
 @interface UserProfileTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *standardImage;
-@property NSArray *storedImages;
 @end
