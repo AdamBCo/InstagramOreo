@@ -253,7 +253,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="303" id="3fh-YB-EXf" customClass="UserProfileTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="303" id="3fh-YB-EXf" customClass="UserProfileTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3fh-YB-EXf" id="cp7-HT-E0p">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -639,7 +639,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="onFollowButtonPressed:" destination="4vb-tw-LLj" eventType="touchUpInside" id="iXA-sq-aht"/>
+                                                        <action selector="onFollowButtonPressed:" destination="752-Hf-mP4" eventType="touchUpInside" id="8NG-GH-Zck"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -675,6 +675,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="capturedPhoto" destination="deA-YO-92E" id="qsD-Bf-f2A"/>
+                                            <outlet property="followButton" destination="qQv-HN-bdB" id="Nlz-FA-Ecy"/>
                                             <outlet property="photoCaptionTextView" destination="17C-R8-qGt" id="6d9-nR-Xx0"/>
                                             <outlet property="profileImageButton" destination="zDu-lr-bgH" id="bGo-6W-kgm"/>
                                             <outlet property="timeLabel" destination="gxe-d6-nBf" id="8Nd-Af-Slg"/>
@@ -698,7 +699,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="Xfe-jM-Oek"/>
                     <connections>
-                        <outlet property="followButton" destination="qQv-HN-bdB" id="xLq-YY-HzF"/>
                         <outlet property="tableview" destination="uAj-IA-3oT" id="ucT-1X-LeN"/>
                     </connections>
                 </viewController>

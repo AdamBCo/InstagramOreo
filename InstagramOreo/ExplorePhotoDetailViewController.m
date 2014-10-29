@@ -11,7 +11,7 @@
 
 @interface ExplorePhotoDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-@property (weak, nonatomic) IBOutlet UIButton *followButton;
+
 
 @end
 
@@ -27,8 +27,7 @@
 {
     [self.tableview reloadData];
 }
-- (IBAction)onFollowButtonPressed:(id)sender {
-}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

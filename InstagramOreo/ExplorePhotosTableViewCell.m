@@ -20,4 +20,8 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)onFollowButtonPressed:(id)sender {
+}
+
+
 @end

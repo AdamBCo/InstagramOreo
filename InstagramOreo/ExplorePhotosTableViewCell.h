@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *photoCaptionTextView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *followButton;
 
 @end
