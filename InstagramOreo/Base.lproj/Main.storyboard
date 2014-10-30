@@ -934,34 +934,50 @@
                                     <action selector="postImage:" destination="43H-PS-ffe" eventType="touchUpInside" id="ghX-Lm-dt5"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFP-sx-JaO">
-                                <rect key="frame" x="99" y="28" width="485" height="75"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7L-GO-Mgt">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="62"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iH1-mN-kFq">
+                                        <rect key="frame" x="8" y="16" width="35" height="30"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mbo-S2-PbX">
+                                <rect key="frame" x="16" y="70" width="75" height="75"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="6JB-Mv-Z9H"/>
+                                    <constraint firstAttribute="width" constant="75" id="MbQ-Vk-Mae"/>
+                                    <constraint firstAttribute="height" constant="75" id="dfp-GS-Adf"/>
                                 </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFP-sx-JaO">
+                                <rect key="frame" x="103" y="70" width="481" height="75"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mbo-S2-PbX">
-                                <rect key="frame" x="16" y="28" width="75" height="75"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="2G4-22-5iP"/>
-                                    <constraint firstAttribute="width" constant="75" id="dFy-wD-e0b"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mbo-S2-PbX" firstAttribute="top" secondItem="pVy-Ve-mgc" secondAttribute="bottom" constant="8" id="4X5-qo-59R"/>
                             <constraint firstItem="0PD-Vj-P2C" firstAttribute="bottom" secondItem="mxg-s6-8gS" secondAttribute="bottomMargin" id="5s3-3q-eNl"/>
-                            <constraint firstItem="dFP-sx-JaO" firstAttribute="trailing" secondItem="mxg-s6-8gS" secondAttribute="trailingMargin" id="IjQ-wE-FlY"/>
+                            <constraint firstItem="y7L-GO-Mgt" firstAttribute="top" secondItem="mxg-s6-8gS" secondAttribute="top" id="I0Y-rj-fVy"/>
+                            <constraint firstItem="dFP-sx-JaO" firstAttribute="trailing" secondItem="mxg-s6-8gS" secondAttribute="trailingMargin" id="L19-TH-FEH"/>
+                            <constraint firstItem="dFP-sx-JaO" firstAttribute="bottom" secondItem="mbo-S2-PbX" secondAttribute="bottom" id="LNr-Ok-Cex"/>
+                            <constraint firstItem="mbo-S2-PbX" firstAttribute="top" secondItem="mxg-s6-8gS" secondAttribute="top" constant="70" id="RtY-vp-CNo"/>
+                            <constraint firstItem="y7L-GO-Mgt" firstAttribute="leading" secondItem="0PD-Vj-P2C" secondAttribute="leading" id="Sgk-pk-M7G"/>
+                            <constraint firstItem="dFP-sx-JaO" firstAttribute="leading" secondItem="mbo-S2-PbX" secondAttribute="trailing" constant="12" id="Yf9-2z-w9g"/>
+                            <constraint firstItem="mbo-S2-PbX" firstAttribute="top" secondItem="y7L-GO-Mgt" secondAttribute="bottom" constant="8" symbolic="YES" id="ZR4-FB-Hhu"/>
                             <constraint firstItem="0PD-Vj-P2C" firstAttribute="leading" secondItem="mxg-s6-8gS" secondAttribute="leadingMargin" constant="-16" id="ZWN-Rx-5ys"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0PD-Vj-P2C" secondAttribute="trailing" constant="-16" id="aKK-m9-aoT"/>
-                            <constraint firstItem="dFP-sx-JaO" firstAttribute="leading" secondItem="mbo-S2-PbX" secondAttribute="trailing" constant="8" id="hSK-i3-7wk"/>
-                            <constraint firstItem="dFP-sx-JaO" firstAttribute="top" secondItem="pVy-Ve-mgc" secondAttribute="bottom" constant="8" id="sXd-YG-1Vb"/>
-                            <constraint firstItem="mbo-S2-PbX" firstAttribute="leading" secondItem="mxg-s6-8gS" secondAttribute="leading" constant="16" id="teY-vt-c0B"/>
+                            <constraint firstItem="dFP-sx-JaO" firstAttribute="trailing" secondItem="mxg-s6-8gS" secondAttribute="trailingMargin" id="lmp-PG-f8N"/>
+                            <constraint firstItem="dFP-sx-JaO" firstAttribute="top" secondItem="mbo-S2-PbX" secondAttribute="top" id="uTe-ft-sFM"/>
+                            <constraint firstItem="y7L-GO-Mgt" firstAttribute="trailing" secondItem="0PD-Vj-P2C" secondAttribute="trailing" id="xfH-A4-J0C"/>
+                            <constraint firstItem="mbo-S2-PbX" firstAttribute="leading" secondItem="mxg-s6-8gS" secondAttribute="leadingMargin" id="y3E-D4-nBI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="camera" id="DYE-zr-RuO"/>
