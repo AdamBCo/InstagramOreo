@@ -17,6 +17,7 @@
 
 @interface ProfileViewController : UIViewController
 @property id<ProfileViewControllerDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UIView *profileView;
 
 
 @end

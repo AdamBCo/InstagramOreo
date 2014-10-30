@@ -13,7 +13,7 @@
 #import "ProfileViewController.h"
 #import <Parse/Parse.h>
 
-@interface UserProfileTableViewController () <UICollectionViewDataSource, UITableViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UICollectionViewDelegateFlowLayout, ProfileViewControllerDelegate>
+@interface UserProfileTableViewController () <UICollectionViewDataSource, UITableViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UICollectionViewDelegateFlowLayout>
 @property NSArray *userPhotos;
 @property NSInteger counterPlus;
 @property NSArray *celltasticArray;
@@ -29,9 +29,22 @@
 
 }
 
--(void)segmentedIndex:(BOOL)showTableView{
-    self.getThatGirl = showTableView;
-    NSLog(@"Changed");
+- (IBAction)segmentedControlTapped:(UISegmentedControl *)sender {
+
+    switch (sender.selectedSegmentIndex) {
+        case 0:
+
+            self.getThatGirl = YES;
+            [self.tableView reloadData];
+            NSLog(@"%hhd",self.getThatGirl);
+            break;
+        case 1:
+            self.getThatGirl = NO;
+            [self.tableView reloadData];
+            NSLog(@"%hhd",self.getThatGirl);
+        default:
+            break;
+    }
 }
 
 
@@ -116,14 +129,6 @@
     return 120;
 }
 
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if (section == 0){
-        ProfileViewController *customView = [ProfileViewController new];
-        customView.delegate = self;
-    }
-    return nil;
-}
 
 
 #pragma mark - UICollectionViewDataSource Methods
