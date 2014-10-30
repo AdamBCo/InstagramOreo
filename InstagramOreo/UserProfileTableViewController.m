@@ -26,6 +26,7 @@
     [super viewDidAppear:animated];
     [self loadPhotosToExplore];
     self.counterPlus = 0;
+    self.getThatGirl = YES;
 
 }
 
@@ -33,7 +34,6 @@
 
     switch (sender.selectedSegmentIndex) {
         case 0:
-
             self.getThatGirl = YES;
             [self.tableView reloadData];
             NSLog(@"%hhd",self.getThatGirl);
@@ -125,7 +125,9 @@
         return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    if (self.getThatGirl) {
+        return 417;
+    }
     return 120;
 }
 
