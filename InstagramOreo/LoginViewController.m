@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginFacebook;
 @property (weak, nonatomic) IBOutlet UIButton *signUpFacebook;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 
 @end
@@ -35,7 +36,7 @@
     [self.passwordTextField setHidden:YES];
     [self.emailTextField setHidden:NO];
     [self.loginFacebook setHidden:YES];
-    [self.signUpFacebook setHidden:NO];
+    [self.nextButton setHidden:NO];
 //    [self.usernameTextField setBorderStyle:UITextBorderStyleNone];
 //    [self.passwordTextField setBorderStyle:UITextBorderStyleNone];
 //    [self.emailTextField setBorderStyle:UITextBorderStyleNone];
@@ -50,7 +51,14 @@
 //    [self.view addGestureRecognizer:tap];
 }
 
+-(void)textFieldChange{
+
+}
+
 -(void)signUp{
+    [self performSegueWithIdentifier:@"SignUpSegue" sender:self];
+}
+- (IBAction)nextButtonPushed:(id)sender {
     [self performSegueWithIdentifier:@"SignUpSegue" sender:self];
 }
 

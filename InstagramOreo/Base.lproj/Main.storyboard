@@ -42,16 +42,6 @@
                                     <action selector="login:" destination="OzC-DJ-vIS" eventType="touchUpInside" id="IXn-O4-Cmn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHA-Dn-eaO">
-                                <rect key="frame" x="170" y="465" width="261" height="47"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="lA4-uP-7Kb"/>
-                                    <constraint firstAttribute="width" constant="261" id="pYG-AL-gxM"/>
-                                </constraints>
-                                <state key="normal" title="Sign Up">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Vdc-Nb-Nmy">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="302"/>
                                 <constraints>
@@ -63,15 +53,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZV-Jk-Rzw">
-                                <rect key="frame" x="16" y="513" width="568" height="30"/>
-                                <state key="normal" title="Facebook">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginWithFacebook:" destination="OzC-DJ-vIS" eventType="touchUpInside" id="nE9-HQ-sDv"/>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gTH-HL-ToH">
                                 <rect key="frame" x="16" y="273" width="568" height="29"/>
                                 <constraints>
@@ -103,21 +84,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vr5-ob-FOj">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXB-LA-JRK">
                                 <rect key="frame" x="16" y="349" width="568" height="30"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Next">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginWithFacebook:" destination="OzC-DJ-vIS" eventType="touchUpInside" id="Uu2-GR-iI1"/>
+                                    <action selector="loginWithFacebook:" destination="OzC-DJ-vIS" eventType="touchUpInside" id="UaT-Ny-1uU"/>
+                                    <action selector="nextButtonPushed:" destination="OzC-DJ-vIS" eventType="touchUpInside" id="44M-eV-PSa"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Vr5-ob-FOj" firstAttribute="leading" secondItem="GJI-yb-rny" secondAttribute="leading" id="1I1-7G-K6W"/>
                             <constraint firstItem="Vdc-Nb-Nmy" firstAttribute="top" secondItem="qF3-Aw-jr6" secondAttribute="top" id="1JO-Wm-SHS"/>
-                            <constraint firstAttribute="centerX" secondItem="eHA-Dn-eaO" secondAttribute="centerX" id="2P6-sx-bdr"/>
                             <constraint firstItem="lmB-aT-qET" firstAttribute="leading" secondItem="qF3-Aw-jr6" secondAttribute="leadingMargin" id="3Vl-gq-yxu"/>
                             <constraint firstItem="nIE-vo-9Q7" firstAttribute="top" secondItem="GJI-yb-rny" secondAttribute="bottom" constant="68" id="3j0-54-7q8"/>
                             <constraint firstItem="GJI-yb-rny" firstAttribute="top" secondItem="lmB-aT-qET" secondAttribute="bottom" constant="8" id="8ih-yJ-bvl"/>
@@ -127,7 +107,6 @@
                             <constraint firstItem="gTH-HL-ToH" firstAttribute="leading" secondItem="Jrm-oB-Fbw" secondAttribute="leading" id="N1s-qb-Lff"/>
                             <constraint firstAttribute="centerX" secondItem="GJI-yb-rny" secondAttribute="centerX" id="NoT-8u-nIx"/>
                             <constraint firstAttribute="centerX" secondItem="AMH-jq-sFM" secondAttribute="centerX" id="PmO-0X-vuG"/>
-                            <constraint firstItem="yZV-Jk-Rzw" firstAttribute="leading" secondItem="GJI-yb-rny" secondAttribute="leading" id="S9l-Bc-MQD"/>
                             <constraint firstItem="Jrm-oB-Fbw" firstAttribute="top" secondItem="Vdc-Nb-Nmy" secondAttribute="bottom" constant="7" id="T7V-dU-TKb"/>
                             <constraint firstItem="Jrm-oB-Fbw" firstAttribute="leading" secondItem="qF3-Aw-jr6" secondAttribute="leadingMargin" id="YdM-ib-r3n"/>
                             <constraint firstItem="Vdc-Nb-Nmy" firstAttribute="centerX" secondItem="lmB-aT-qET" secondAttribute="centerX" id="ZXF-ka-gNv"/>
@@ -136,15 +115,10 @@
                             <constraint firstItem="gTH-HL-ToH" firstAttribute="top" secondItem="AMH-jq-sFM" secondAttribute="bottom" constant="8" symbolic="YES" id="dMQ-eV-8gw"/>
                             <constraint firstItem="lmB-aT-qET" firstAttribute="top" secondItem="Vdc-Nb-Nmy" secondAttribute="bottom" constant="8" symbolic="YES" id="dRV-dd-PLQ"/>
                             <constraint firstItem="Vdc-Nb-Nmy" firstAttribute="leading" secondItem="qF3-Aw-jr6" secondAttribute="leading" id="dbK-VS-p3G"/>
-                            <constraint firstItem="Vr5-ob-FOj" firstAttribute="baseline" secondItem="GJI-yb-rny" secondAttribute="baseline" id="fDY-vb-uZG"/>
                             <constraint firstItem="GJI-yb-rny" firstAttribute="trailing" secondItem="qF3-Aw-jr6" secondAttribute="trailingMargin" id="hTD-EP-PIk"/>
                             <constraint firstItem="Jrm-oB-Fbw" firstAttribute="top" secondItem="gTH-HL-ToH" secondAttribute="bottom" constant="8" symbolic="YES" id="hcA-ru-adM"/>
-                            <constraint firstItem="Vdc-Nb-Nmy" firstAttribute="centerX" secondItem="Vr5-ob-FOj" secondAttribute="centerX" id="inc-kv-l9b"/>
                             <constraint firstItem="Jrm-oB-Fbw" firstAttribute="trailing" secondItem="qF3-Aw-jr6" secondAttribute="trailingMargin" id="jA9-Ny-FLd"/>
-                            <constraint firstItem="eHA-Dn-eaO" firstAttribute="top" secondItem="nIE-vo-9Q7" secondAttribute="bottom" constant="-40" id="l3i-vZ-LwC"/>
                             <constraint firstItem="gTH-HL-ToH" firstAttribute="centerX" secondItem="blo-Vy-slU" secondAttribute="centerX" id="mgh-nb-9rY"/>
-                            <constraint firstItem="TjP-rM-u3L" firstAttribute="top" secondItem="yZV-Jk-Rzw" secondAttribute="bottom" constant="8" symbolic="YES" id="n6s-pn-Egz"/>
-                            <constraint firstItem="Vdc-Nb-Nmy" firstAttribute="centerX" secondItem="yZV-Jk-Rzw" secondAttribute="centerX" id="nko-Dy-F6p"/>
                             <constraint firstItem="Vdc-Nb-Nmy" firstAttribute="centerX" secondItem="Jrm-oB-Fbw" secondAttribute="centerX" id="pyI-M0-MaH"/>
                             <constraint firstAttribute="centerX" secondItem="nIE-vo-9Q7" secondAttribute="centerX" constant="-153.5" id="sFD-o2-wfs"/>
                             <constraint firstItem="GJI-yb-rny" firstAttribute="leading" secondItem="qF3-Aw-jr6" secondAttribute="leadingMargin" id="zAZ-EB-gaJ"/>
@@ -153,10 +127,9 @@
                     <connections>
                         <outlet property="emailTextField" destination="Jrm-oB-Fbw" id="Li7-rH-ED8"/>
                         <outlet property="infoLabel" destination="AMH-jq-sFM" id="q3Z-cK-N2Q"/>
-                        <outlet property="loginFacebook" destination="yZV-Jk-Rzw" id="Xh8-gg-9go"/>
+                        <outlet property="nextButton" destination="XXB-LA-JRK" id="nzr-MM-HF6"/>
                         <outlet property="passwordTextField" destination="GJI-yb-rny" id="O9h-C6-ivG"/>
                         <outlet property="segmentedControl" destination="gTH-HL-ToH" id="wpf-Ru-t11"/>
-                        <outlet property="signUpFacebook" destination="Vr5-ob-FOj" id="uOR-qx-PL9"/>
                         <outlet property="usernameTextField" destination="lmB-aT-qET" id="Nkc-K4-5K9"/>
                         <segue destination="HUB-ow-gs7" kind="show" identifier="SignUpSegue" id="tFM-cE-Ced"/>
                     </connections>
@@ -390,7 +363,7 @@
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="r2N-zZ-Yn6">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
-                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cfg-0Q-W8Z">
                                                 <size key="itemSize" width="50" height="50"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -523,6 +496,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="profileImage" destination="Wek-kk-oGI" id="uc7-Yd-aGF"/>
                                     <outlet property="standardImage" destination="Eee-Z7-Bom" id="eFk-NW-QuW"/>
                                 </connections>
                             </tableViewCell>
