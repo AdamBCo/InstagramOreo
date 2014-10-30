@@ -1270,11 +1270,11 @@
             </objects>
             <point key="canvasLocation" x="3107" y="-454"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="5vR-WZ-3PX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tbG-zs-Wyb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="TYu-yC-SUW"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="user" id="TYu-yC-SUW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iUf-gr-tix">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
