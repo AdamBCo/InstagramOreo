@@ -26,14 +26,12 @@
     self.navigationItem.title = @"PHOTO";
 
     self.user = [PFUser currentUser];
-
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [self.tableview reloadData];
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -91,7 +89,7 @@
         selectedPostUserName = username;
     }];
 
-    if (selectedPostUserName != self.user.username)
+    if (![selectedPostUserName isEqualToString:self.user.username])
     {
         if ([followButton.titleLabel.text isEqualToString:@"follow"])
         {
@@ -110,6 +108,24 @@
         else
         {
             // Delete the follower
+            PFQuery *query = [Follow query];
+            [query whereKey:@"userBeingFollowed" equalTo:self.selectedPost.user];
+            [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                if (error) {
+                    NSLog(@"Error: %@",error.localizedDescription);
+                }
+                else
+                {
+                    [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (error) {
+                            NSLog(@"Error: %@",error.localizedDescription);
+                        }
+                        else {
+                            [followButton setTitle:@"follow" forState:UIControlStateNormal];
+                        }
+                    }];
+                }
+            }];
         }
     }
 }
