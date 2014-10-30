@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		343021F41A01E763009FAD37 /* Follow.m in Sources */ = {isa = PBXBuildFile; fileRef = 343021F31A01E763009FAD37 /* Follow.m */; };
 		343D7B2919FF38D6009B7BCF /* NSString+Trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 343D7B2819FF38D6009B7BCF /* NSString+Trim.m */; };
 		344A99201A001EB400C24B46 /* ExplorePhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 344A991F1A001EB400C24B46 /* ExplorePhotoDetailViewController.m */; };
 		344A99231A001EFD00C24B46 /* ExplorePhotosTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 344A99221A001EFD00C24B46 /* ExplorePhotosTableViewCell.m */; };
@@ -57,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		343021F21A01E763009FAD37 /* Follow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Follow.h; sourceTree = "<group>"; };
+		343021F31A01E763009FAD37 /* Follow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Follow.m; sourceTree = "<group>"; };
 		343D7B2719FF38D6009B7BCF /* NSString+Trim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Trim.h"; sourceTree = "<group>"; };
 		343D7B2819FF38D6009B7BCF /* NSString+Trim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Trim.m"; sourceTree = "<group>"; };
 		344A991E1A001EB400C24B46 /* ExplorePhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplorePhotoDetailViewController.h; sourceTree = "<group>"; };
@@ -216,6 +219,8 @@
 				661989C219FEE71B00F6C11A /* News Feed Table View */,
 				343D7B2D19FF4B19009B7BCF /* Explore Collection View Cell */,
 				343D7B2A19FF3946009B7BCF /* Categories */,
+				343021F21A01E763009FAD37 /* Follow.h */,
+				343021F31A01E763009FAD37 /* Follow.m */,
 				661989C319FEE8DA00F6C11A /* Post.h */,
 				661989C419FEE8DA00F6C11A /* Post.m */,
 				6619897419FEC73B00F6C11A /* Images.xcassets */,
@@ -433,6 +438,7 @@
 				661989C519FEE8DA00F6C11A /* Post.m in Sources */,
 				661989A719FEDDC600F6C11A /* NewsFeedTableViewController.m in Sources */,
 				6619897019FEC73B00F6C11A /* SignUpViewController.m in Sources */,
+				343021F41A01E763009FAD37 /* Follow.m in Sources */,
 				661989AD19FEDE3100F6C11A /* ExploreCollectionViewController.m in Sources */,
 				661989AA19FEDE0400F6C11A /* NewsFeedTableViewCell.m in Sources */,
 				661989BA19FEE6B900F6C11A /* UserProfileTableViewCell.m in Sources */,
