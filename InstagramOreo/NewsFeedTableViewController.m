@@ -88,13 +88,13 @@
     PFQuery *query = [Like query];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
     [query whereKey:@"post" equalTo:photoPost];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
-            NSLog(@"Error: %@",error.localizedDescription);
+            NSLog(@"Error error quering like: %@",error.localizedDescription);
         }
         else
         {
-            if (object) {
+            if (objects.firstObject) {
                 [cell.likeButton setTitle:@"Liked" forState:UIControlStateNormal];
             }
             else
@@ -147,7 +147,7 @@
 
         [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (error) {
-                NSLog(@"Error: %@", error.localizedDescription);
+                NSLog(@"Error saving like: %@", error.localizedDescription);
             }
             else {
                 [likeButton setTitle:@"Liked" forState:UIControlStateNormal];
@@ -157,7 +157,7 @@
 
         [photoPost saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (error) {
-                NSLog(@"Error: %@", error.localizedDescription);
+                NSLog(@"Error updated likes on post: %@", error.localizedDescription);
             }
             else {
                 [self.tableView reloadData];
@@ -172,13 +172,13 @@
         [query whereKey:@"post" equalTo:photoPost];
         [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             if (error) {
-                NSLog(@"Error: %@",error.localizedDescription);
+                NSLog(@"Error querying like: %@",error.localizedDescription);
             }
             else
             {
                 [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (error) {
-                        NSLog(@"Error: %@",error.localizedDescription);
+                        NSLog(@"Error deleting like: %@",error.localizedDescription);
                     }
                     else {
                         [likeButton setTitle:@"Like" forState:UIControlStateNormal];
@@ -191,7 +191,7 @@
 
         [photoPost saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (error) {
-                NSLog(@"Error: %@", error.localizedDescription);
+                NSLog(@"Error saving post with new like count: %@", error.localizedDescription);
             }
             else {
                 [self.tableView reloadData];
