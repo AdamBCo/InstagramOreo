@@ -25,6 +25,8 @@
     [super viewDidLoad];
     self.navigationItem.title = @"PHOTO";
 
+    self.user = [PFUser currentUser];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -48,6 +50,23 @@
         cell.usernameLabel.text = username;
     }];
 
+    PFQuery *query = [Follow query];
+    [query whereKey:@"userBeingFollowed" equalTo:self.selectedPost.user];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@",error.localizedDescription);
+        }
+        else
+        {
+            if (objects.count > 0 ) {
+                [cell.followButton setTitle:@"unfollow" forState:UIControlStateNormal];
+            }
+            else {
+                [cell.followButton setTitle:@"follow" forState:UIControlStateNormal];
+            }
+        }
+    }];
+
     //Image
     [self.selectedPost standardImageWithCompletionBlock:^(UIImage *photo) {
         cell.capturedPhoto.image = photo;
@@ -66,9 +85,34 @@
 
 - (void)followButtonPressed:(UIButton *)followButton
 {
-    NSLog(@"HI");
-}
+    // Get selectedPost's userName
+    __block NSString *selectedPostUserName;
+    [self.selectedPost usernameWithCompletionBlock:^(NSString *username) {
+        selectedPostUserName = username;
+    }];
 
+    if (selectedPostUserName != self.user.username)
+    {
+        if ([followButton.titleLabel.text isEqualToString:@"follow"])
+        {
+            Follow *follower = [Follow object];
+            follower.userBeingFollowed = self.selectedPost.user;
+            follower.userWhoFollowed = self.user;
+            [follower saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (error) {
+                    NSLog(@"Error: %@", error.localizedDescription);
+                }
+                else {
+                    [followButton setTitle:@"unfollow" forState:UIControlStateNormal];
+                }
+            }];
+        }
+        else
+        {
+            // Delete the follower
+        }
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {
