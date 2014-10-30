@@ -9,6 +9,7 @@
 #import "ExplorePhotoDetailViewController.h"
 #import "ExplorePhotosTableViewCell.h"
 #import "Follow.h"
+#import "Like.h"
 
 @interface ExplorePhotoDetailViewController () <UITableViewDelegate, UITableViewDataSource, ExplorePhotoDetailCellDelegate>
 
@@ -60,6 +61,27 @@
             }
             else {
                 [cell.followButton setTitle:@"follow" forState:UIControlStateNormal];
+            }
+        }
+    }];
+
+    PFQuery *likeQuery = [Like query];
+    [likeQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [likeQuery whereKey:@"post" equalTo:self.selectedPost];
+    [likeQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@",error.localizedDescription);
+        }
+        else
+        {
+            if (objects.firstObject) {
+                //[cell.l setTitle:@"Liked" forState:UIControlStateNormal];
+                cell.likesLabel.text = @(objects.count).description;
+            }
+            else
+            {
+                //[cell.likeButton setTitle:@"Like" forState:UIControlStateNormal];
+                cell.likesLabel.text = @"0";
             }
         }
     }];
