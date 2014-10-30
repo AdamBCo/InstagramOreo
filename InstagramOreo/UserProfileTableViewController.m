@@ -11,6 +11,7 @@
 #import "ProfileCollectionViewCell.h"
 #import "ProfileCollectionTableViewCell.h"
 #import "ProfileViewController.h"
+#import "CameraViewController.h"
 #import <Parse/Parse.h>
 #import "Follow.h"
 #import "Post.h"

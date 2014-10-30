@@ -145,6 +145,8 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
+    self.tabBarController.selectedIndex = 0;
+    [self.tabBarController.tabBar setHidden:NO];
     [picker dismissViewControllerAnimated:YES completion:NULL];
     self.takePhoto = YES;
 }
@@ -154,6 +156,11 @@
     [self uploadImage];
     [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (IBAction)backButtonPressed:(id)sender {
+    
+}
+
 
 
 
