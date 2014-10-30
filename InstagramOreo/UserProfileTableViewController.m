@@ -85,6 +85,7 @@
 }
 
 
+
 - (IBAction)segmentedControlTapped:(UISegmentedControl *)sender {
 
     switch (sender.selectedSegmentIndex) {
@@ -105,7 +106,8 @@
 
 - (void)loadPhotosToExplore
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto"];
+    PFQuery *query = [Post query];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
          NSMutableArray *newObjectIDArray = [NSMutableArray array];
