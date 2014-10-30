@@ -12,6 +12,8 @@
 #import "ProfileCollectionTableViewCell.h"
 #import "ProfileViewController.h"
 #import <Parse/Parse.h>
+#import "Follow.h"
+#import "Post.h"
 
 @interface UserProfileTableViewController () <UICollectionViewDataSource, UITableViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UICollectionViewDelegateFlowLayout>
 @property NSArray *userPhotos;
@@ -32,7 +34,56 @@
     self.counterPlus = 0;
     self.getThatGirl = YES;
 
+    [self setFollowingLabel];
+    [self setFollowersLabel];
+    [self setPostsLabel];
 }
+
+- (void)setFollowingLabel
+{
+    PFQuery *query = [Follow query];
+    [query whereKey:@"userWhoFollowed" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"Error error quering like: %@",error.localizedDescription);
+        }
+        else
+        {
+            self.followingNumberLabel.text = @(objects.count).description;
+        }
+    }];
+}
+
+- (void)setFollowersLabel
+{
+    PFQuery *query = [Follow query];
+    [query whereKey:@"userBeingFollowed" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"Error error quering like: %@",error.localizedDescription);
+        }
+        else
+        {
+            self.followersNumberLabel.text = @(objects.count).description;
+        }
+    }];
+}
+
+- (void)setPostsLabel
+{
+    PFQuery *query = [Post query];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"Error error quering like: %@",error.localizedDescription);
+        }
+        else
+        {
+            self.postsnNumberLabel.text = @(objects.count).description;
+        }
+    }];
+}
+
 
 - (IBAction)segmentedControlTapped:(UISegmentedControl *)sender {
 
