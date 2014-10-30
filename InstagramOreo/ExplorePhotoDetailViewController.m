@@ -28,6 +28,36 @@
     [self.tableview reloadData];
 }
 
+<<<<<<< HEAD
+=======
+- (IBAction)onFollowButtonPressed:(UIButton *)followButton
+{
+    PFUser *user = [PFUser currentUser];
+    // Get selectedPost's userName
+    __block NSString *selectedPostUserName;
+    [self.selectedPost usernameWithCompletionBlock:^(NSString *username) {
+        selectedPostUserName = username;
+    }];
+
+    if (selectedPostUserName != user.username)
+    {
+        PFRelation *followingRelationship = [user relationForKey:@"following"];
+        //PFQuery *query = [followingRelationship query];
+
+        //[query whereKey:@"user" equalTo:user];
+        // Add selectedUser to list of users currentUser follows
+
+        [followingRelationship addObject:self.selectedPost.user];
+        [user saveInBackground];
+        
+        // Add currentUser to list of users following selectedUser
+        PFRelation *followerRelationship = [self.selectedPost.user relationForKey:@"follower"];
+        [followerRelationship addObject:user];
+        [self.selectedPost.user saveInBackground];
+    }
+
+}
+>>>>>>> Added code to follow user in explor detail view
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
