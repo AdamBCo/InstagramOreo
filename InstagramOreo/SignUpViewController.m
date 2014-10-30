@@ -13,7 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 
 @end
 
@@ -26,8 +25,7 @@
     self.navigationController.navigationBar.alpha = 1;
 
     [self.nameTextField addTarget:self.passwordTextField action:@selector(becomeFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [self.passwordTextField addTarget:self.emailTextField action:@selector(becomeFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [self.emailTextField addTarget:self action:@selector(createAccountButtonPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.passwordTextField addTarget:self action:@selector(createAccountButtonPressed:) forControlEvents:UIControlEventEditingDidEndOnExit];
 
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
@@ -41,10 +39,7 @@
     {
         [self.nameTextField resignFirstResponder];
     }
-    else if ([self.emailTextField isFirstResponder])
-    {
-        [self.emailTextField resignFirstResponder];
-    }
+
     else if ([self.passwordTextField isFirstResponder])
     {
         [self.passwordTextField resignFirstResponder];
@@ -55,7 +50,7 @@
     
     NSString *username = [self.nameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *password = [self.passwordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString *email = [self.emailTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *email = self.emailString;
     
     if ([username length] == 0 || [password length] == 0 || [email length] == 0) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops!"
@@ -67,7 +62,7 @@
         PFUser *newUser = [PFUser user];
         newUser.username = username;
         newUser.password = password;
-        newUser.email = email;
+        newUser.email = self.emailString;
         
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (error) {

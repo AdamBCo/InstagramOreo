@@ -17,8 +17,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UIButton *loginFacebook;
-@property (weak, nonatomic) IBOutlet UIButton *signUpFacebook;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
@@ -30,12 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.hidesBackButton = YES;
-    [self.tabBarController.tabBar setHidden:YES];
-    self.navigationController.navigationBar.alpha = 0;
     [self.usernameTextField setHidden:YES];
     [self.passwordTextField setHidden:YES];
     [self.emailTextField setHidden:NO];
-    [self.loginFacebook setHidden:YES];
     [self.nextButton setHidden:NO];
 //    [self.usernameTextField setBorderStyle:UITextBorderStyleNone];
 //    [self.passwordTextField setBorderStyle:UITextBorderStyleNone];
@@ -51,8 +46,9 @@
 //    [self.view addGestureRecognizer:tap];
 }
 
--(void)textFieldChange{
-
+-(void)viewDidAppear:(BOOL)animated{
+    [self.tabBarController.tabBar setHidden:YES];
+    self.navigationController.navigationBar.alpha = 0;
 }
 
 -(void)signUp{
@@ -98,8 +94,7 @@
             [self.usernameTextField setHidden:YES];
             [self.passwordTextField setHidden:YES];
             [self.emailTextField setHidden:NO];
-            [self.loginFacebook setHidden:YES];
-            [self.signUpFacebook setHidden:NO];
+            [self.nextButton setHidden:NO];
             self.infoLabel.text = [NSString stringWithFormat:@"Sign up to see photos from\n your friends"];
             NSLog(@"Hello");
             break;
@@ -108,8 +103,7 @@
             [self.usernameTextField setHidden:NO];
             [self.passwordTextField setHidden:NO];
             [self.emailTextField setHidden:YES];
-            [self.loginFacebook setHidden:NO];
-            [self.signUpFacebook setHidden:YES];
+            [self.nextButton setHidden:YES];
             self.infoLabel.text = [NSString stringWithFormat:@"Login to see photos from\n your friends"];
             NSLog(@"Bye");
             break;
@@ -129,8 +123,6 @@
 }
 
 
-- (IBAction)loginWithFacebook:(id)sender {
-}
 
 - (IBAction)login:(id)sender {
     NSString *username = [self.usernameTextField.text trim];
