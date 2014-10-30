@@ -21,6 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"Email: %@",self.emailString);
+    self.navigationItem.hidesBackButton = NO;
+    self.navigationController.navigationBar.alpha = 1;
 
     [self.nameTextField addTarget:self.passwordTextField action:@selector(becomeFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.passwordTextField addTarget:self.emailTextField action:@selector(becomeFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
@@ -29,6 +32,8 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
 }
+
+
 
 - (void)dismissKeyboard
 {
