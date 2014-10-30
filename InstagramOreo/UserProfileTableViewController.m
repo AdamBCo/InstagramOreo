@@ -8,31 +8,53 @@
 
 #import "UserProfileTableViewController.h"
 #import "UserProfileTableViewCell.h"
-#import "ProfileCollectionViewCell.h"
 #import "ProfileCollectionTableViewCell.h"
+#import "ProfileCollectionViewCell.h"
 #import <Parse/Parse.h>
 
-@interface UserProfileTableViewController () <UICollectionViewDataSource, UITableViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface UserProfileTableViewController () <UICollectionViewDataSource, UITableViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UICollectionViewDelegateFlowLayout, ProfileViewConrollerDelegate>
+
 @property UIRefreshControl *refreshControl;
 @property NSArray *userPhotos;
 @property NSInteger counterPlus;
 @property NSArray *celltasticArray;
-@property BOOL *getThatGirl;
+@property BOOL getThatGirl;
 @end
 
 @implementation UserProfileTableViewController
+
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    self.profileViewController = [ProfileViewController new];
+    self.profileViewController.delegate = self;
+}
+
+-(void)segmentedIndex:(int)index{
+    if (index == 0) {
+        self.getThatGirl = YES;
+        NSLog(@"FuckIT");
+        [self.tableView reloadData];
+    } else{
+        self.getThatGirl = NO;
+            NSLog(@"Goober");
+        [self.tableView reloadData];
+    }
+}
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self loadPhotosToExplore];
     self.counterPlus = 0;
-    self.getThatGirl = YES;
 
     self.refreshControl = [UIRefreshControl new];
     [self.refreshControl addTarget:self action:@selector(loadPhotosToExplore) forControlEvents:UIControlEventValueChanged];
     [self setRefreshControl:self.refreshControl];
 
 }
+
+
+
 
 - (void)loadPhotosToExplore
 {

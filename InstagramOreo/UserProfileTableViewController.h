@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProfileViewController.h"
 
 @interface UserProfileTableViewController : UITableViewController
+@property ProfileViewController *profileViewController;
 
 @end
