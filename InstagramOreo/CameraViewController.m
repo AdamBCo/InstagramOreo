@@ -31,6 +31,7 @@
 {
     [super viewWillAppear:animated];
     self.tabBarController.delegate = self;
+    [self.tabBarController.tabBar setHidden:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -113,6 +114,7 @@
 
                         NSLog(@"IT WAS Posted!!");
                         [self.navigationController popToRootViewControllerAnimated:YES];
+                        [self.tabBarController.tabBar setHidden:NO];
                         self.takePhoto = YES;
                     }
                     else{
