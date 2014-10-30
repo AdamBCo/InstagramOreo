@@ -154,6 +154,7 @@
 - (IBAction)postImage:(id)sender
 {
     [self uploadImage];
+    self.tabBarController.selectedIndex = 0;
     [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
