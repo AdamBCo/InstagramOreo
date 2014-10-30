@@ -41,7 +41,6 @@
 		661989C819FEFF0C00F6C11A /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989C719FEFF0C00F6C11A /* PhotoCollectionViewCell.m */; };
 		661989CB19FF037700F6C11A /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989CA19FF037700F6C11A /* CameraViewController.m */; };
 		661989CE19FF068200F6C11A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661989CD19FF068200F6C11A /* LoginViewController.m */; };
-		66D66A841A0173E6000778C9 /* ProfileCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D66A831A0173E6000778C9 /* ProfileCollectionViewController.m */; };
 		66D66A871A017E62000778C9 /* UserProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D66A861A017E62000778C9 /* UserProfileTableViewController.m */; };
 		66D66A8A1A01AEA5000778C9 /* ProfileCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D66A891A01AEA5000778C9 /* ProfileCollectionTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -112,8 +111,6 @@
 		661989CA19FF037700F6C11A /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		661989CC19FF068200F6C11A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		661989CD19FF068200F6C11A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		66D66A821A0173E6000778C9 /* ProfileCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCollectionViewController.h; sourceTree = "<group>"; };
-		66D66A831A0173E6000778C9 /* ProfileCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCollectionViewController.m; sourceTree = "<group>"; };
 		66D66A851A017E62000778C9 /* UserProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileTableViewController.h; sourceTree = "<group>"; };
 		66D66A861A017E62000778C9 /* UserProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileTableViewController.m; sourceTree = "<group>"; };
 		66D66A881A01AEA5000778C9 /* ProfileCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCollectionTableViewCell.h; sourceTree = "<group>"; };
@@ -308,8 +305,6 @@
 		66D66A801A0171F9000778C9 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				66D66A821A0173E6000778C9 /* ProfileCollectionViewController.h */,
-				66D66A831A0173E6000778C9 /* ProfileCollectionViewController.m */,
 				661989BE19FEE6FD00F6C11A /* ProfileCollectionViewCell.h */,
 				661989BF19FEE6FD00F6C11A /* ProfileCollectionViewCell.m */,
 			);
@@ -446,7 +441,6 @@
 				661989B319FEE26E00F6C11A /* NotificationsTableViewController.m in Sources */,
 				661989C019FEE6FD00F6C11A /* ProfileCollectionViewCell.m in Sources */,
 				6619896A19FEC73B00F6C11A /* main.m in Sources */,
-				66D66A841A0173E6000778C9 /* ProfileCollectionViewController.m in Sources */,
 				344A99231A001EFD00C24B46 /* ExplorePhotosTableViewCell.m in Sources */,
 				344A99201A001EB400C24B46 /* ExplorePhotoDetailViewController.m in Sources */,
 				343D7B2919FF38D6009B7BCF /* NSString+Trim.m in Sources */,

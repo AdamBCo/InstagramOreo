@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface ProfileCollectionTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UICollectionView *photoCollectionView;
 @property NSArray *storedImages;
 

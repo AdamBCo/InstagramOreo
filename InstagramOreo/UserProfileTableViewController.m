@@ -13,6 +13,7 @@
 #import <Parse/Parse.h>
 
 @interface UserProfileTableViewController () <UICollectionViewDataSource, UITableViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UICollectionViewDelegateFlowLayout>
+@property UIRefreshControl *refreshControl;
 @property NSArray *userPhotos;
 @property NSInteger counterPlus;
 @property NSArray *celltasticArray;
@@ -25,6 +26,11 @@
     [super viewDidAppear:animated];
     [self loadPhotosToExplore];
     self.counterPlus = 0;
+    self.getThatGirl = YES;
+
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self action:@selector(loadPhotosToExplore) forControlEvents:UIControlEventValueChanged];
+    [self setRefreshControl:self.refreshControl];
 
 }
 
@@ -41,19 +47,48 @@
                  [newObjectIDArray addObject:[eachObject objectId]];
                  PFFile *file = [eachObject objectForKey:@"imageFile"];
                  [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                     [photoArray addObject:data];
-                     self.userPhotos = [NSArray arrayWithArray:photoArray];
+                     if (error) {
+                         NSLog(@"Error: %@",error);
+                         [self.refreshControl endRefreshing];
+                     }else{
+                         [photoArray addObject:data];
+                         self.userPhotos = [NSArray arrayWithArray:photoArray];
 
-                     NSMutableArray *cool = [NSMutableArray arrayWithArray:self.userPhotos];
+                         NSMutableArray *cool = [NSMutableArray arrayWithArray:self.userPhotos];
 
-                     NSMutableArray *bad = [NSMutableArray array];
-                     self.celltasticArray = [self getArrayForThrees:cool arrayOfThrees:bad];
-                     [self.tableView reloadData];
+                         NSMutableArray *bad = [NSMutableArray array];
+                         self.celltasticArray = [self getArrayForThrees:cool arrayOfThrees:bad];
+
+
+                         /////////////////////////Refresh Smaller CollectionViews//////////////////////////////
+                         if (!self.getThatGirl) {
+                             NSMutableArray *cells = [NSMutableArray array];
+                             for (NSInteger j = 0; j < [self.tableView numberOfSections]; ++j)
+                             {
+                                 for (NSInteger i = 0; i < [self.tableView numberOfRowsInSection:j]; ++i)
+                                 {
+                                     [cells addObject:[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:j]]];
+                                 }
+                             }
+
+                             for (ProfileCollectionTableViewCell *cell in cells) {
+                                 [cell.photoCollectionView reloadData];
+                                 NSLog(@"I Like People");
+                                 
+                             }
+                         }
+                         ///////////////////////////HELLO///////////////////////////////////////////////////////
+
+                         [self.tableView reloadData];
+                         [self.refreshControl endRefreshing];
+                     }
                  }];
              }
          }
      }];
 }
+
+//Recursive method to pull three images from the array above.
 
 - (NSArray *)getArrayForThrees:(NSMutableArray *)fullArray arrayOfThrees:(NSMutableArray *)arrayOfThrees{
     if (fullArray.count < 3)
@@ -79,8 +114,9 @@
     return arrayOfThrees;
 }
 
-#pragma mark - Table view data source
 
+
+#pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.getThatGirl) {
@@ -88,6 +124,8 @@
     }
     return self.celltasticArray.count;
 }
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
@@ -103,10 +141,16 @@
         NSLog(@"NO Girl!!");
         return cell;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
+///PROBLEM with Heights
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.getThatGirl) {
+        return 300;
+    }
     return 120;
 }
+
+
 
 
 #pragma mark - UICollectionViewDataSource Methods
@@ -141,9 +185,6 @@
     UIEdgeInsets edgeInsets = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
     return edgeInsets;
 }
-
-
-
 
 
 @end
