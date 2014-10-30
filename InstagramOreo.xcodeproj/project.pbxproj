@@ -282,8 +282,6 @@
 		661989C119FEE70700F6C11A /* Profile View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				661989AE19FEE24D00F6C11A /* ProfileViewController.h */,
-				661989AF19FEE24D00F6C11A /* ProfileViewController.m */,
 				66D66A811A017262000778C9 /* TableView */,
 				66D66A801A0171F9000778C9 /* CollectionView */,
 			);
@@ -326,6 +324,8 @@
 			children = (
 				66D66A851A017E62000778C9 /* UserProfileTableViewController.h */,
 				66D66A861A017E62000778C9 /* UserProfileTableViewController.m */,
+				661989AE19FEE24D00F6C11A /* ProfileViewController.h */,
+				661989AF19FEE24D00F6C11A /* ProfileViewController.m */,
 				66D66A881A01AEA5000778C9 /* ProfileCollectionTableViewCell.h */,
 				66D66A891A01AEA5000778C9 /* ProfileCollectionTableViewCell.m */,
 				661989B819FEE6B900F6C11A /* UserProfileTableViewCell.h */,

@@ -874,20 +874,33 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ONO-XS-UX7">
+                                <rect key="frame" x="16" y="177" width="568" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlTapped:" destination="YDW-0w-69b" eventType="valueChanged" id="bd8-Pm-puT"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ONO-XS-UX7" firstAttribute="trailing" secondItem="F55-3b-I7h" secondAttribute="trailingMargin" id="FCi-qa-FJi"/>
+                            <constraint firstItem="ONO-XS-UX7" firstAttribute="leading" secondItem="F55-3b-I7h" secondAttribute="leadingMargin" id="J9Z-a8-keg"/>
                             <constraint firstItem="kUj-ib-xjA" firstAttribute="baseline" secondItem="pxY-TJ-dIV" secondAttribute="baseline" id="Kox-K7-qqn"/>
                             <constraint firstAttribute="trailing" secondItem="kUj-ib-xjA" secondAttribute="trailing" constant="119" id="Ozf-Bg-kcm"/>
                             <constraint firstItem="pxY-TJ-dIV" firstAttribute="centerY" secondItem="F55-3b-I7h" secondAttribute="centerY" id="RH0-J1-qDV"/>
                             <constraint firstItem="pxY-TJ-dIV" firstAttribute="leading" secondItem="F55-3b-I7h" secondAttribute="leading" constant="131" id="RhN-lI-ycT"/>
+                            <constraint firstAttribute="bottom" secondItem="ONO-XS-UX7" secondAttribute="bottom" constant="20" symbolic="YES" id="d77-zY-YyH"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Dq-A0-PfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="701" y="-583"/>
+            <point key="canvasLocation" x="701" y="-583.5"/>
         </scene>
     </scenes>
     <resources>

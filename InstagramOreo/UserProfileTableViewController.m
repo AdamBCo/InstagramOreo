@@ -10,13 +10,14 @@
 #import "UserProfileTableViewCell.h"
 #import "ProfileCollectionViewCell.h"
 #import "ProfileCollectionTableViewCell.h"
+#import "ProfileViewController.h"
 #import <Parse/Parse.h>
 
-@interface UserProfileTableViewController () <UICollectionViewDataSource, UITableViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface UserProfileTableViewController () <UICollectionViewDataSource, UITableViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UICollectionViewDelegateFlowLayout, ProfileViewControllerDelegate>
 @property NSArray *userPhotos;
 @property NSInteger counterPlus;
 @property NSArray *celltasticArray;
-@property BOOL *getThatGirl;
+@property BOOL getThatGirl;
 @end
 
 @implementation UserProfileTableViewController
@@ -27,6 +28,12 @@
     self.counterPlus = 0;
 
 }
+
+-(void)segmentedIndex:(BOOL)showTableView{
+    self.getThatGirl = showTableView;
+    NSLog(@"Changed");
+}
+
 
 - (void)loadPhotosToExplore
 {
@@ -83,6 +90,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
     if (self.getThatGirl) {
         return self.userPhotos.count;
     }
@@ -106,6 +114,15 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     return 120;
+}
+
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section == 0){
+        ProfileViewController *customView = [ProfileViewController new];
+        customView.delegate = self;
+    }
+    return nil;
 }
 
 
