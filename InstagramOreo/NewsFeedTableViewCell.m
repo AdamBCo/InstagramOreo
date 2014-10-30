@@ -13,8 +13,10 @@
 - (void)awakeFromNib {
     // Initialization code
 }
-- (IBAction)likeButtonPressed:(id)sender {
-    
+
+- (IBAction)likeButtonPressed:(id)sender
+{
+    [self.delegate updateLikeCount:sender];
 }
 
 

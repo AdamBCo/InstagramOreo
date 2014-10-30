@@ -11,7 +11,8 @@
 #import <Parse/Parse.h>
 #import "Post.h"
 
-@interface NewsFeedTableViewController ()
+@interface NewsFeedTableViewController () <NewsFeedTableViewCellDelegate>
+
 @property NSArray *arrayOfPhotoObjects;
 @property UIRefreshControl *refreshControl;
 
@@ -106,7 +107,12 @@
     
 }
 
+#pragma mark - NewsFeedTableViewCell Delegate Methods
 
+- (void)updateLikeCount:(UIButton *)likeButton
+{
+
+}
 
                 
                 

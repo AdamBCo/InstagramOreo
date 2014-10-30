@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
+@protocol NewsFeedTableViewCellDelegate <NSObject>
+
+- (void)updateLikeCount:(id)sender;
+
+@end
+
 @interface NewsFeedTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet PFImageView *capturedPhoto;
 @property (weak, nonatomic) IBOutlet UIButton *profileImageButton;
@@ -17,5 +23,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 
-
+@property id<NewsFeedTableViewCellDelegate> delegate;
 @end
