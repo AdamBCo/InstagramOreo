@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
+@protocol ExplorePhotoDetailCellDelegate <NSObject>
+
+- (void)followButtonPressed:(id)sender;
+
+@end
+
 @interface ExplorePhotosTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *capturedPhoto;
@@ -18,5 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
+
+@property id<ExplorePhotoDetailCellDelegate>delegate;
 
 @end

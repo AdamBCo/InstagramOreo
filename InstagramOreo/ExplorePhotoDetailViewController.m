@@ -8,9 +8,12 @@
 
 #import "ExplorePhotoDetailViewController.h"
 #import "ExplorePhotosTableViewCell.h"
+#import "Follow.h"
 
-@interface ExplorePhotoDetailViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ExplorePhotoDetailViewController () <UITableViewDelegate, UITableViewDataSource, ExplorePhotoDetailCellDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property PFUser *user;
 
 
 @end
@@ -21,6 +24,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"PHOTO";
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -37,6 +41,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ExplorePhotosTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.delegate = self;
 
     //UserName
     [self.selectedPost usernameWithCompletionBlock:^(NSString *username) {
@@ -56,6 +61,14 @@
     
     return cell;
 }
+
+#pragma mark - Follow / Unfollow User 
+
+- (void)followButtonPressed:(UIButton *)followButton
+{
+    NSLog(@"HI");
+}
+
 
 - (void)didReceiveMemoryWarning
 {
