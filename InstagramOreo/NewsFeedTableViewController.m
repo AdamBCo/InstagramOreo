@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 #import "Post.h"
 #import "Like.h"
+#import "Follow.h"
 
 @interface NewsFeedTableViewController () <NewsFeedTableViewCellDelegate>
 
@@ -25,7 +26,7 @@
     [super viewDidLoad];
     
     self.refreshControl = [UIRefreshControl new];
-    [self.refreshControl addTarget:self action:@selector(downloadAllImages) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(getMyfollowersImages) forControlEvents:UIControlEventValueChanged];
     [self setRefreshControl:self.refreshControl];
     
 }
@@ -38,7 +39,8 @@
     if (currentUser) {
         NSLog(@"The current user is: %@", currentUser.username);
         [self.tabBarController.tabBar setHidden:NO];
-        [self downloadAllImages];
+        [self getMyfollowersImages];
+
     }
     else {
         [self performSegueWithIdentifier:@"ShowLoginSegue" sender:self];
@@ -112,21 +114,38 @@
     return cell;
 }
 
-
-- (void)downloadAllImages {
-    PFUser *user = [PFUser currentUser];
-    PFQuery *postQuery = [PFQuery queryWithClassName:[Post parseClassName]];
-    postQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
-    [postQuery orderByDescending:@"createdAt"];
-    [postQuery whereKey:@"user" equalTo:user];
-    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+- (void)getMyfollowersImages
+{
+    PFQuery *query = [Follow query];
+    [query whereKey:@"userWhoFollowed" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
-            NSLog(@"Error: %@",error);
-            [self.refreshControl endRefreshing];
-        }else{
-            self.arrayOfPhotoObjects = objects;
-            [self.tableView reloadData];
-            [self.refreshControl endRefreshing];
+            NSLog(@"Error error quering like: %@",error.localizedDescription);
+        }
+        else
+        {
+            self.arrayOfPhotoObjects = [NSArray array];
+            for (Follow *follower in objects) {
+                PFQuery *postQuery = [Post query];
+
+                [postQuery whereKey:@"user" equalTo:follower.userBeingFollowed];
+                [postQuery orderByDescending:@"createdAt"];
+                [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objectsArray, NSError *error) {
+                    if (error) {
+                        NSLog(@"%@", error.localizedDescription);
+                        [self.refreshControl endRefreshing];
+                    }
+                    else
+                    {
+                        if (![self.arrayOfPhotoObjects containsObject:objectsArray.firstObject]) {
+
+                            self.arrayOfPhotoObjects = [self.arrayOfPhotoObjects arrayByAddingObjectsFromArray:objectsArray];
+                            [self.tableView reloadData];
+                            [self.refreshControl endRefreshing];
+                        }
+                    }
+                }];
+            }
         }
     }];
 }
