@@ -83,7 +83,16 @@
 
 - (void)followButtonPressed:(UIButton *)followButton
 {
-    [Follow updateFollowingStatusAndButton:followButton selectedUserPost:self.selectedPost loggedInUser:self.user];
+    // Get selectedPost's userName
+    __block NSString *selectedPostUserName;
+    [self.selectedPost usernameWithCompletionBlock:^(NSString *username) {
+        selectedPostUserName = username;
+    }];
+
+    if (![selectedPostUserName isEqualToString:self.user.username])
+    {
+        [Follow updateFollowingStatusAndButton:followButton selectedUser:self.selectedPost.user loggedInUser:self.user];
+    }
 }
 
 - (void)didReceiveMemoryWarning

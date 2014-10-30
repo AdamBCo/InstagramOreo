@@ -13,7 +13,7 @@
 
 @interface NotificationsTableViewController () <NotificationTableViewCellDelegate>
 
-@property NSArray *notifications;
+@property NSArray *listOfFollows;
 
 @end
 
@@ -23,7 +23,18 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"NOTIFICATIONS";
+    self.listOfFollows = [NSArray array];
+}
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self queryUsersImFollowing];
+}
+
+- (void)queryUsersImFollowing
+{
+    self.listOfFollows = [NSArray array];
     PFQuery *query = [Follow query];
     [query whereKey:@"userWhoFollowed" equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -32,10 +43,26 @@
         }
         else
         {
-            self.notifications = objects;
+            self.listOfFollows = [self.listOfFollows arrayByAddingObjectsFromArray:objects];
             [self.tableView reloadData];
         }
     }];
+
+//    PFQuery *query2 = [Follow query];
+//    [query2 whereKey:@"userBeingFollowed" equalTo:[PFUser currentUser]];
+//    [query2 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (error) {
+//            NSLog(@"Error: %@",error.localizedDescription);
+//        }
+//        else
+//        {
+//            //NSLog(@"%@", objects)
+//            self.listOfFollows = [self.listOfFollows arrayByAddingObjectsFromArray:objects];
+//            NSLog(@"%@ 1", self.listOfFollows);
+//            [self.tableView reloadData];
+//        }
+//    }];
+
 }
 
 #pragma mark - Table view data source
@@ -43,17 +70,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.notifications.count;
+    return self.listOfFollows.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NotificationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
-    Follow *follower = [self.notifications objectAtIndex:indexPath.row];
+    Follow *follower = [self.listOfFollows objectAtIndex:indexPath.row];
     PFUser *userFollower = follower.userBeingFollowed;
-    [userFollower fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+
+    [userFollower fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error)
+    {
         cell.notificationTextView.text = userFollower.username;
     }];
+
     cell.delegate = self;
     return cell;
 }
@@ -67,52 +97,29 @@
 
 - (void)followButtonPressed:(UIButton *)followButton
 {
-    //[Follow updateFollowingStatusAndButton:followButton selectedUserPost:self.selectedPost loggedInUser:self.user];
-}
+    CGPoint buttonPosition = [followButton convertPoint:CGPointZero toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+    // Get pfuser of selected user
+    Follow *followUser = [self.listOfFollows objectAtIndex:indexPath.row];
+    PFUser *selectedUser = followUser.userBeingFollowed;
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+    // Get get string of selected user's name
+    __block NSString *selectedPostUserName;
+    [selectedUser fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        selectedPostUserName = selectedUser.username;
+    }];
+    // Follow or Unfollow user depending on what was tapped. 
+    if (![selectedPostUserName isEqualToString:[PFUser currentUser].username])
+    {
+        [Follow updateFollowingStatusAndButton:followButton selectedUser:selectedUser loggedInUser:[PFUser currentUser]];
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+//        NSMutableArray *mutableFollowers = [NSMutableArray arrayWithArray:self.listOfFollows];
+//        [mutableFollowers removeObjectAtIndex:indexPath.row];
+//        self.listOfFollows = [NSArray arrayWithArray:mutableFollowers];
+//        [self.tableView reloadData];
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    }
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (void)didReceiveMemoryWarning
 {
