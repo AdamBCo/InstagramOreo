@@ -19,6 +19,7 @@
 @dynamic user;
 @dynamic commentsArray;
 @dynamic userName;
+@dynamic likes;
 
 
 + (NSString *)parseClassName {
@@ -62,7 +63,10 @@
 }
 
 
-
+- (NSInteger)likeCount
+{
+    return [self.likes integerValue];
+}
 
 
 

@@ -19,6 +19,7 @@
 @property PFUser *user;
 @property NSArray *commentsArray;
 @property NSString *userName;
+@property NSNumber *likes;
 
 -(void)standardImageWithCompletionBlock:(void(^)(UIImage *))completionBlock;
 -(void)usernameWithCompletionBlock:(void(^)(NSString *username))completionBlock;

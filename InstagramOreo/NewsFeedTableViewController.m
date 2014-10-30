@@ -10,6 +10,7 @@
 #import "NewsFeedTableViewCell.h"
 #import <Parse/Parse.h>
 #import "Post.h"
+#import "Like.h"
 
 @interface NewsFeedTableViewController () <NewsFeedTableViewCellDelegate>
 
@@ -60,11 +61,11 @@
 
 #pragma mark - Table view data source
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.arrayOfPhotoObjects.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     Post *photoPost = [self.arrayOfPhotoObjects objectAtIndex:indexPath.row];
     NewsFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsFeedCell"];
@@ -88,7 +89,7 @@
 }
 
 
-- (void)downloadAllImages{
+- (void)downloadAllImages {
     PFUser *user = [PFUser currentUser];
     PFQuery *postQuery = [PFQuery queryWithClassName:[Post parseClassName]];
     postQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
@@ -111,6 +112,9 @@
 
 - (void)updateLikeCount:(UIButton *)likeButton
 {
+    CGPoint buttonPosition = [likeButton convertPoint:CGPointZero toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+
 
 }
 
