@@ -11,6 +11,7 @@
 @interface NotificationTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *profileImageButton;
 @property (weak, nonatomic) IBOutlet UITextView *notificationTextView;
-@property (weak, nonatomic) IBOutlet UIButton *notificationButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *followButton;
 
 @end

@@ -20,9 +20,15 @@
 
     // Configure the view for the selected state
 }
-- (IBAction)profileImageButtonPressed:(id)sender {
+- (IBAction)profileImageButtonPressed:(id)sender
+{
+
 }
-- (IBAction)notificationButtonPressed:(id)sender {
+
+- (IBAction)onFollowButtonPressed:(id)sender
+{
+    
 }
+
 
 @end

@@ -54,11 +54,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NotificationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
-    PFUser *user = [self.notifications objectAtIndex:indexPath.row];
-    cell.notificationTextView.text = user.username;
+    //Follow *follower = [self.notifications objectAtIndex:indexPath.row];
+    //cell.notificationTextView.text = follower.userBeingFollowed.username;
+    cell.notificationTextView.text = @"This is awesome!";
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55.0;
+}
 
 /*
 // Override to support conditional editing of the table view.
