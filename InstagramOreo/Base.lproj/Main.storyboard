@@ -454,6 +454,11 @@
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
+                    <connections>
+                        <outlet property="followersNumberLabel" destination="qOg-pJ-G2g" id="y92-7Y-VmE"/>
+                        <outlet property="followingNumberLabel" destination="aGR-Ek-pCg" id="D0h-Ug-g4R"/>
+                        <outlet property="postsnNumberLabel" destination="vuC-H2-I1Q" id="1Ij-0X-Oz4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QMv-EB-Rca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

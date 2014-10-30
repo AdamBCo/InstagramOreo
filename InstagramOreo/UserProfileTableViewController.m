@@ -17,6 +17,10 @@
 @property NSArray *userPhotos;
 @property NSInteger counterPlus;
 @property NSArray *celltasticArray;
+@property (weak, nonatomic) IBOutlet UILabel *postsnNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followersNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followingNumberLabel;
+
 @property BOOL getThatGirl;
 @end
 
