@@ -63,12 +63,6 @@
 }
 
 
-- (NSInteger)likeCount
-{
-    return [self.likes integerValue];
-}
-
-
 
 
 @end

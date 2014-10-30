@@ -648,13 +648,7 @@
                                                 <constraint firstAttribute="height" constant="50" id="JAn-U6-BeS"/>
                                                 <constraint firstAttribute="width" constant="50" id="RDT-h5-KnG"/>
                                             </constraints>
-                                            <state key="normal" title="Button">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6Z-07-FM3">
-                                            <rect key="frame" x="105" y="387" width="68" height="29"/>
-                                            <state key="normal" title="Comment">
+                                            <state key="normal" backgroundImage="user">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
@@ -676,11 +670,15 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4u-1z-zOI">
                                             <rect key="frame" x="8" y="390" width="63" height="25"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="63" id="2g7-Va-fdc"/>
-                                                <constraint firstAttribute="height" constant="25" id="PPU-VG-BFp"/>
+                                                <constraint firstAttribute="width" constant="63" id="2g7-Va-fdc">
+                                                    <variation key="widthClass=compact" constant="44"/>
+                                                </constraint>
+                                                <constraint firstAttribute="height" constant="25" id="PPU-VG-BFp">
+                                                    <variation key="widthClass=compact" constant="28"/>
+                                                </constraint>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <state key="normal" title="365 likes">
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <state key="normal" title="Like">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -696,20 +694,56 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hm1-0p-hpv">
+                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="42" id="0CA-Gb-QKm"/>
+                                                <constraint firstAttribute="height" constant="21" id="ALl-DE-OD4"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="0CA-Gb-QKm"/>
+                                                    <exclude reference="ALl-DE-OD4"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="0CA-Gb-QKm"/>
+                                                    <include reference="ALl-DE-OD4"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6Z-07-FM3">
+                                            <rect key="frame" x="105" y="387" width="68" height="29"/>
+                                            <state key="normal" title="Comment">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="w6Z-07-FM3" firstAttribute="top" secondItem="qXL-RX-ecj" secondAttribute="bottom" constant="8" symbolic="YES" id="0gw-Mr-zHQ"/>
+                                        <constraint firstItem="w6Z-07-FM3" firstAttribute="top" secondItem="qXL-RX-ecj" secondAttribute="bottom" constant="8" symbolic="YES" id="0gw-Mr-zHQ">
+                                            <variation key="widthClass=compact" constant="10"/>
+                                        </constraint>
                                         <constraint firstItem="UBo-tC-Uyv" firstAttribute="top" secondItem="Jz8-ib-Fxi" secondAttribute="bottom" constant="-1" id="2YG-h5-yrY"/>
                                         <constraint firstItem="qXL-RX-ecj" firstAttribute="leading" secondItem="UBo-tC-Uyv" secondAttribute="leading" id="4Ae-KH-K8n"/>
                                         <constraint firstItem="kuM-mE-i50" firstAttribute="leading" secondItem="Jz8-ib-Fxi" secondAttribute="trailing" constant="8" symbolic="YES" id="56U-jd-a9x"/>
                                         <constraint firstItem="qXL-RX-ecj" firstAttribute="trailing" secondItem="UBo-tC-Uyv" secondAttribute="trailing" id="5Eq-vp-TgQ"/>
                                         <constraint firstItem="fee-1W-vFs" firstAttribute="trailing" secondItem="kuM-mE-i50" secondAttribute="trailing" id="AuT-xy-Tgs"/>
                                         <constraint firstItem="k4u-1z-zOI" firstAttribute="baseline" secondItem="w6Z-07-FM3" secondAttribute="firstBaseline" id="CZ7-lb-hy6"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="w6Z-07-FM3" secondAttribute="bottom" constant="31" id="GKw-NU-xam"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="w6Z-07-FM3" secondAttribute="bottom" constant="31" id="GKw-NU-xam">
+                                            <variation key="widthClass=compact" constant="29.5"/>
+                                        </constraint>
                                         <constraint firstItem="w6Z-07-FM3" firstAttribute="baseline" secondItem="k4u-1z-zOI" secondAttribute="firstBaseline" id="I4p-Wf-MPH"/>
-                                        <constraint firstItem="w6Z-07-FM3" firstAttribute="leading" secondItem="k4u-1z-zOI" secondAttribute="trailing" constant="34" id="I6V-Ra-Dnz"/>
+                                        <constraint firstItem="w6Z-07-FM3" firstAttribute="leading" secondItem="k4u-1z-zOI" secondAttribute="trailing" constant="34" id="I6V-Ra-Dnz">
+                                            <variation key="widthClass=compact" constant="8"/>
+                                        </constraint>
                                         <constraint firstItem="Jz8-ib-Fxi" firstAttribute="leading" secondItem="E9q-V5-hfj" secondAttribute="leading" constant="8" id="Lib-fA-ysg"/>
-                                        <constraint firstItem="k4u-1z-zOI" firstAttribute="leading" secondItem="Jz8-ib-Fxi" secondAttribute="leading" id="Nor-7g-aYd"/>
+                                        <constraint firstItem="k4u-1z-zOI" firstAttribute="leading" secondItem="Jz8-ib-Fxi" secondAttribute="leading" id="Nor-7g-aYd">
+                                            <variation key="widthClass=compact" constant="54"/>
+                                        </constraint>
                                         <constraint firstItem="kuM-mE-i50" firstAttribute="leading" secondItem="fee-1W-vFs" secondAttribute="leading" id="Q85-TH-7R8"/>
                                         <constraint firstItem="qXL-RX-ecj" firstAttribute="top" secondItem="UBo-tC-Uyv" secondAttribute="bottom" constant="6" id="SHB-Ll-JZj"/>
                                         <constraint firstItem="UBo-tC-Uyv" firstAttribute="top" secondItem="kuM-mE-i50" secondAttribute="bottom" constant="21" id="TVv-MC-xmQ"/>
@@ -717,17 +751,40 @@
                                         <constraint firstItem="s9n-98-GsA" firstAttribute="trailing" secondItem="E9q-V5-hfj" secondAttribute="trailingMargin" id="bac-u1-SQB"/>
                                         <constraint firstItem="UBo-tC-Uyv" firstAttribute="top" secondItem="fee-1W-vFs" secondAttribute="bottom" constant="-1" id="f6U-Fg-ITd"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="k4u-1z-zOI" secondAttribute="bottom" constant="32" id="keW-HX-HoY"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Hm1-0p-hpv" secondAttribute="bottom" constant="35.5" id="lce-2J-LT0"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="UBo-tC-Uyv" secondAttribute="bottom" constant="127" id="lyZ-Nt-sVj"/>
                                         <constraint firstAttribute="trailing" secondItem="qXL-RX-ecj" secondAttribute="trailing" id="mcx-gz-6WC"/>
+                                        <constraint firstItem="Hm1-0p-hpv" firstAttribute="leading" secondItem="E9q-V5-hfj" secondAttribute="leadingMargin" constant="4" id="mzg-d0-q4n"/>
                                         <constraint firstItem="fee-1W-vFs" firstAttribute="top" secondItem="E9q-V5-hfj" secondAttribute="topMargin" constant="27" id="olj-fz-DhJ"/>
                                         <constraint firstItem="kuM-mE-i50" firstAttribute="top" secondItem="E9q-V5-hfj" secondAttribute="topMargin" constant="1" id="sSF-Gi-ASp"/>
                                         <constraint firstItem="fee-1W-vFs" firstAttribute="trailing" secondItem="s9n-98-GsA" secondAttribute="trailing" id="vTG-Gj-rii"/>
-                                        <constraint firstItem="s9n-98-GsA" firstAttribute="baseline" secondItem="w6Z-07-FM3" secondAttribute="baseline" id="wTu-aA-Jch"/>
+                                        <constraint firstItem="s9n-98-GsA" firstAttribute="baseline" secondItem="w6Z-07-FM3" secondAttribute="baseline" id="wTu-aA-Jch">
+                                            <variation key="widthClass=compact" constant="-2"/>
+                                        </constraint>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="Hm1-0p-hpv"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="lce-2J-LT0"/>
+                                            <exclude reference="mzg-d0-q4n"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="Hm1-0p-hpv"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="lce-2J-LT0"/>
+                                            <include reference="mzg-d0-q4n"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="capturedPhoto" destination="UBo-tC-Uyv" id="GKX-zU-b8f"/>
                                     <outlet property="likeButton" destination="k4u-1z-zOI" id="GDS-lY-92U"/>
+                                    <outlet property="likesLabel" destination="Hm1-0p-hpv" id="TiP-Y5-KkT"/>
                                     <outlet property="photoCaptionTextView" destination="qXL-RX-ecj" id="9Kr-SJ-v6g"/>
                                     <outlet property="profileImageButton" destination="Jz8-ib-Fxi" id="Ovn-1x-c9f"/>
                                     <outlet property="timeLabel" destination="fee-1W-vFs" id="gsX-eE-xTr"/>
@@ -753,7 +810,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ln-ps-JbH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3121" y="250"/>
+            <point key="canvasLocation" x="3120" y="250"/>
         </scene>
         <!--Explore Photo Detail View Controller-->
         <scene sceneID="4X1-8F-DxN">
