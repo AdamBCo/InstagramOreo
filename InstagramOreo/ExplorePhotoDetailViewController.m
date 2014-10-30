@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property PFUser *user;
 
-
 @end
 
 @implementation ExplorePhotoDetailViewController
@@ -75,7 +74,7 @@
 
     //TimeLabel
     cell.timeLabel.text = self.selectedPost.timeCreatedString;
-    
+
     return cell;
 }
 
