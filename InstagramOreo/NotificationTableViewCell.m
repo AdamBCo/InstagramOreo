@@ -27,7 +27,7 @@
 
 - (IBAction)onFollowButtonPressed:(id)sender
 {
-    
+    [self.delegate followButtonPressed:sender];
 }
 
 

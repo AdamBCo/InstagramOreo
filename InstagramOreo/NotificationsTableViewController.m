@@ -11,7 +11,7 @@
 #import <Parse/Parse.h>
 #import "Follow.h"
 
-@interface NotificationsTableViewController ()
+@interface NotificationsTableViewController () <NotificationTableViewCellDelegate>
 
 @property NSArray *notifications;
 
@@ -19,14 +19,10 @@
 
 @implementation NotificationsTableViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.title = @"NOTIFICATIONS";
 
     PFQuery *query = [Follow query];
     [query whereKey:@"userWhoFollowed" equalTo:[PFUser currentUser]];
@@ -45,24 +41,33 @@
 #pragma mark - Table view data source
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.notifications.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NotificationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
-    //Follow *follower = [self.notifications objectAtIndex:indexPath.row];
-    //cell.notificationTextView.text = follower.userBeingFollowed.username;
-    cell.notificationTextView.text = @"This is awesome!";
+    Follow *follower = [self.notifications objectAtIndex:indexPath.row];
+    PFUser *userFollower = follower.userBeingFollowed;
+    [userFollower fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        cell.notificationTextView.text = userFollower.username;
+    }];
+    cell.delegate = self;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 55.0;
+}
+
+#pragma mark - NotificationTableViewCell Delegate Methods
+
+- (void)followButtonPressed:(UIButton *)followButton
+{
+    //[Follow updateFollowingStatusAndButton:followButton selectedUserPost:self.selectedPost loggedInUser:self.user];
 }
 
 /*

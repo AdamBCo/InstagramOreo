@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
+#import "Post.h"
 
 @interface Follow : PFObject <PFSubclassing>
 
 @property PFUser *userBeingFollowed;
 @property PFUser *userWhoFollowed;
+
++ (void)updateFollowingStatusAndButton:(UIButton *)followButton selectedUserPost:(Post *)selectedUserPost loggedInUser:(PFUser *)loggedInUser;
 
 @end

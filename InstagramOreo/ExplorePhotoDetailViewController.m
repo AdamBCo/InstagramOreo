@@ -83,51 +83,7 @@
 
 - (void)followButtonPressed:(UIButton *)followButton
 {
-    // Get selectedPost's userName
-    __block NSString *selectedPostUserName;
-    [self.selectedPost usernameWithCompletionBlock:^(NSString *username) {
-        selectedPostUserName = username;
-    }];
-
-    if (![selectedPostUserName isEqualToString:self.user.username])
-    {
-        if ([followButton.titleLabel.text isEqualToString:@"follow"])
-        {
-            Follow *follower = [Follow object];
-            follower.userBeingFollowed = self.selectedPost.user;
-            follower.userWhoFollowed = self.user;
-            [follower saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (error) {
-                    NSLog(@"Error: %@", error.localizedDescription);
-                }
-                else {
-                    [followButton setTitle:@"unfollow" forState:UIControlStateNormal];
-                }
-            }];
-        }
-        else
-        {
-            // Delete the follower
-            PFQuery *query = [Follow query];
-            [query whereKey:@"userBeingFollowed" equalTo:self.selectedPost.user];
-            [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                if (error) {
-                    NSLog(@"Error: %@",error.localizedDescription);
-                }
-                else
-                {
-                    [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        if (error) {
-                            NSLog(@"Error: %@",error.localizedDescription);
-                        }
-                        else {
-                            [followButton setTitle:@"follow" forState:UIControlStateNormal];
-                        }
-                    }];
-                }
-            }];
-        }
-    }
+    [Follow updateFollowingStatusAndButton:followButton selectedUserPost:self.selectedPost loggedInUser:self.user];
 }
 
 - (void)didReceiveMemoryWarning
