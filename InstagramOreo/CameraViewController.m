@@ -158,7 +158,8 @@
 }
 
 - (IBAction)backButtonPressed:(id)sender {
-    
+    self.tabBarController.selectedIndex = 0;
+    [self.tabBarController.tabBar setHidden:YES];
 }
 
 
