@@ -7,8 +7,13 @@
 //
 
 #import "NotificationsTableViewController.h"
+#import "NotificationTableViewCell.h"
+#import <Parse/Parse.h>
+#import "Follow.h"
 
 @interface NotificationsTableViewController ()
+
+@property NSArray *notifications;
 
 @end
 
@@ -22,34 +27,38 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    PFQuery *query = [Follow query];
+    [query whereKey:@"userWhoFollowed" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@",error.localizedDescription);
+        }
+        else
+        {
+            self.notifications = objects;
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 0;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 0;
+    return self.notifications.count;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NotificationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
+    PFUser *user = [self.notifications objectAtIndex:indexPath.row];
+    cell.notificationTextView.text = user.username;
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -94,5 +103,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
 
 @end
